@@ -156,6 +156,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="checkML.h" />
+    <ClInclude Include="ISerializer.h" />
+    <ClInclude Include="json.hpp" />
+    <ClInclude Include="JsonSerializer.h" />
     <ClInclude Include="src\Tracker.h" />
   </ItemGroup>
   <ItemGroup>
