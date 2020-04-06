@@ -345,3 +345,8 @@ healthchecksdb
 /SDL2_net-2.0.1/
 /SDL2_ttf-2.0.14/
 /SDL2-2.0.7/
+
+#Exclude unnecessary file in Tracker
+
+Tracker/Inter/*
+Tracker/Libs/*
