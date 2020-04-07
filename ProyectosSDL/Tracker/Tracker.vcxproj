@@ -18,6 +18,21 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\checkML.h" />
+    <ClInclude Include="src\ISerializer.h" />
+    <ClInclude Include="src\json.hpp" />
+    <ClInclude Include="src\JsonSerializer.h" />
+    <ClInclude Include="src\TestEvent.h" />
+    <ClInclude Include="src\Tracker.h" />
+    <ClInclude Include="src\TrackerEvent.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\JsonSerializer.cpp" />
+    <ClCompile Include="src\TestEvent.cpp" />
+    <ClCompile Include="src\Tracker.cpp" />
+    <ClCompile Include="src\TrackerEvent.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{6F40F9A5-E14F-45AC-8131-8A1E63FEC8B1}</ProjectGuid>
@@ -155,16 +170,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="checkML.h" />
-    <ClInclude Include="ISerializer.h" />
-    <ClInclude Include="json.hpp" />
-    <ClInclude Include="JsonSerializer.h" />
-    <ClInclude Include="src\Tracker.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\Tracker.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
