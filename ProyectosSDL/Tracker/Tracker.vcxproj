@@ -20,18 +20,24 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\checkML.h" />
+    <ClInclude Include="src\FilePersistence.h" />
+    <ClInclude Include="src\IPersistence.h" />
     <ClInclude Include="src\ISerializer.h" />
+    <ClInclude Include="src\ITrackerAsset.h" />
     <ClInclude Include="src\json.hpp" />
     <ClInclude Include="src\JsonSerializer.h" />
-    <ClInclude Include="src\TestEvent.h" />
+    <ClInclude Include="src\Persistence.h" />
+    <ClInclude Include="src\TimeManager.h" />
     <ClInclude Include="src\Tracker.h" />
-    <ClInclude Include="src\TrackerEvent.h" />
+    <ClInclude Include="src\TrackerEvents.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\FilePersistence.cpp" />
     <ClCompile Include="src\JsonSerializer.cpp" />
-    <ClCompile Include="src\TestEvent.cpp" />
+    <ClCompile Include="src\Persistence.cpp" />
+    <ClCompile Include="src\TimeManager.cpp" />
     <ClCompile Include="src\Tracker.cpp" />
-    <ClCompile Include="src\TrackerEvent.cpp" />
+    <ClCompile Include="src\TrackerEvents.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -170,16 +176,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="checkML.h" />
-    <ClInclude Include="ISerializer.h" />
-    <ClInclude Include="json.hpp" />
-    <ClInclude Include="JsonSerializer.h" />
-    <ClInclude Include="src\Tracker.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\Tracker.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
