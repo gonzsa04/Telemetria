@@ -1,4 +1,7 @@
 #pragma once
+#include "IPersistence.h"
+#include "FilePersistence.h"
+
 class Tracker
 {
 public:
@@ -20,7 +23,6 @@ public:
 private:
 
 	static Tracker* _instance;
-
-
+	IPersistence* _persistence;
 };
 

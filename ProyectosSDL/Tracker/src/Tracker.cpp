@@ -16,7 +16,8 @@ Tracker::~Tracker()
 
 void Tracker::Init()
 {
-
+	_persistence = new FilePersistence();
+	_persistence->Send("test");
 }
 
 Tracker & Tracker::GetInstance()
