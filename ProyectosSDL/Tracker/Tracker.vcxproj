@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\checkML.h" />
+    <ClInclude Include="src\CSVSerializer.h" />
     <ClInclude Include="src\FilePersistence.h" />
     <ClInclude Include="src\IPersistence.h" />
     <ClInclude Include="src\ISerializer.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="src\TrackerEvents.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\CSVSerializer.cpp" />
     <ClCompile Include="src\FilePersistence.cpp" />
     <ClCompile Include="src\JsonSerializer.cpp" />
     <ClCompile Include="src\Persistence.cpp" />

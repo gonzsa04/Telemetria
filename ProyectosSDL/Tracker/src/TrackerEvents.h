@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-
+#include <sstream>
 using namespace std;
 
 enum EventType	{ TEST_EVENT };

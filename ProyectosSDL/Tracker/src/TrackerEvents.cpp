@@ -8,6 +8,7 @@ string TrackerEvent::toJson()
 	//Elementos comunes del evento
 	j["userID"] = id_;
 	j["time"] = timeStamp_;
+	j["type"] = type_;
 	// TO DO: falta tipo de evento
 	string result = j.dump();
 
@@ -16,7 +17,11 @@ string TrackerEvent::toJson()
 
 string TrackerEvent::toCSV()
 {
-	return string();
+	string timeStamp = to_string(timeStamp_);
+	string type = to_string(type_); 
+	string result = "user id: " + id_ + ",time: " + timeStamp + ",type: " + type;
+	//También se puede usar append y sstream, pero de momento lo dejo así que es lo mismo
+	return result;
 }
 
 string TestEvent::toJson()
@@ -27,5 +32,6 @@ string TestEvent::toJson()
 
 string TestEvent::toCSV()
 {
+	//Aquí irían los atributos específicos del evento en csv
 	return TrackerEvent::toCSV();
 }
