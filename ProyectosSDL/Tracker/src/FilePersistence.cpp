@@ -1,8 +1,9 @@
 #include "FilePersistence.h"
-#include <Windows.h>
 #include <iostream>
 #include <fstream>
-
+#include <stdio.h>
+#include <direct.h>
+#include <stdlib.h>
 
 FilePersistence::FilePersistence()
 {
@@ -15,23 +16,32 @@ FilePersistence::~FilePersistence()
 
 void FilePersistence::Send(std::string str)
 {
-	std::string path;
-	std::string filename = "userID.json";
-	path = GetWorkingDirectory();
-	path = path + "\logs";
-
-	std::ofstream i(path); //file
-	//json j;
-	//writes serialized file
-
-	i.close(); 
-
+	_events.push(str);
+	std::cout << "event sent" << std::endl;
 }
 
-std::string FilePersistence::GetWorkingDirectory()
+void FilePersistence::Flush()
 {
-	char buf[256];
-	GetCurrentDirectoryA(256, buf);
-	return std::string(buf) + '\\';
+	if (!_events.empty())
+	{
+		std::string path = _SOLUTIONDIR;
+		path += "\logs\\";
+		_mkdir(path.c_str()); //creates directory if it doesn't exist
+
+		std::string filename = "\\userID.json";
+		path += filename;
+
+		std::ofstream file; 
+		
+		file.open(path, std::ios::out | std::ios::app);
+
+		while (!_events.empty()) //write pending events
+		{
+			std::string event = _events.pop();
+			file << event << '\n';
+		}
+
+		file.close();
+	}
 }
 

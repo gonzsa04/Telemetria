@@ -13,16 +13,19 @@ Tracker::Tracker()
 
 Tracker::~Tracker()
 {
+	while (!_persistenceObjects.empty())
+	{
+		_persistenceObjects.pop_front();
+	}
 }
 
-void Tracker::init()
+void Tracker::Init()
 {
 	activeTrackers_.push_back(new TestTracker());
-	_persistence = new FilePersistence();
-	_persistence->Send("test");
+	_persistenceObjects.push_front(new FilePersistence());
 }
 
-void Tracker::end()
+void Tracker::End()
 {
 	for (ITrackerAsset* trackerAsset : activeTrackers_) {
 		delete trackerAsset; trackerAsset = nullptr;
@@ -53,7 +56,8 @@ void Tracker::trackEvent(TrackerEvent* trackerEvent)
 	while (it != activeTrackers_.end() && !(*it)->accept(trackerEvent)) { it++;	}
 	if( it != activeTrackers_.end()){
 		// Bucle por IPersistance haciendo send del event
-
+		for (std::list<IPersistence*>::iterator ite = _persistenceObjects.begin(); ite != _persistenceObjects.end(); ++ite)
+			(*ite)->Send(trackerEvent->toJson());
 	}
 }
 

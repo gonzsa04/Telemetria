@@ -21,13 +21,13 @@
   <ItemGroup>
     <ClInclude Include="src\checkML.h" />
     <ClInclude Include="src\CSVSerializer.h" />
+    <ClInclude Include="src\ConcurrentQueue.h" />
     <ClInclude Include="src\FilePersistence.h" />
     <ClInclude Include="src\IPersistence.h" />
     <ClInclude Include="src\ISerializer.h" />
     <ClInclude Include="src\ITrackerAsset.h" />
     <ClInclude Include="src\json.hpp" />
     <ClInclude Include="src\JsonSerializer.h" />
-    <ClInclude Include="src\Persistence.h" />
     <ClInclude Include="src\TimeManager.h" />
     <ClInclude Include="src\Tracker.h" />
     <ClInclude Include="src\TrackerEvents.h" />
@@ -36,7 +36,6 @@
     <ClCompile Include="src\CSVSerializer.cpp" />
     <ClCompile Include="src\FilePersistence.cpp" />
     <ClCompile Include="src\JsonSerializer.cpp" />
-    <ClCompile Include="src\Persistence.cpp" />
     <ClCompile Include="src\TimeManager.cpp" />
     <ClCompile Include="src\Tracker.cpp" />
     <ClCompile Include="src\TrackerEvents.cpp" />
@@ -115,7 +114,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_SOLUTIONDIR=R"($(SolutionDir))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile />
     </ClCompile>
@@ -148,7 +147,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_SOLUTIONDIR=R"($(SolutionDir))";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile />
     </ClCompile>

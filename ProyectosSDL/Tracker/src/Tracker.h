@@ -12,8 +12,8 @@ public:
 	Tracker();
 	~Tracker();
 
-	void init();
-	void end();
+	void Init();
+	void End();
 
 	/// <summary>
 	/// Returns the singleton for the tracker
@@ -33,5 +33,5 @@ private:
 	std::list<ITrackerAsset*> activeTrackers_;
 
 	static Tracker* _instance;
-	IPersistence* _persistence;
+	std::list<IPersistence*> _persistenceObjects;
 };
