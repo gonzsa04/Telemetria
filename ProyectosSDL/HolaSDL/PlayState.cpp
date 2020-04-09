@@ -4,7 +4,7 @@
 #include "TransitionScreen.h"
 #include "NPC.h"
 #include "CreditosState.h"
-
+#include <Tracker.h>
 
 bool compareZ(GameObject* o1, GameObject* o2) { //pure luck require ahead
 	int obj1_, obj2_;
@@ -133,6 +133,12 @@ void PlayState::swapScene(int nextScene)
 }
 
 void PlayState::handleEvent(SDL_Event & e) {
+	if (e.type == SDL_MOUSEBUTTONDOWN) { 
+		// USABILIDAD
+		ClickEvent sceneEvent = Tracker::GetInstance().createClickEvent();
+		sceneEvent.setParameters(currentScene, { e.button.x, e.button.y });
+		Tracker::GetInstance().trackEvent(&sceneEvent);
+	}
 
 	if (!enConversacion) {  //para que no de error con textos automaticos
 		if (e.type == SDL_KEYDOWN) { //jaaaaaaaaaaaaaaaacksss

@@ -12,6 +12,7 @@
 #include "FeedbackCursorInputComponent.h"
 #include "ActEndingScreen.h"
 #include "GOcofres.h"
+#include <Tracker.h>
 
 Scene::Scene()
 {
@@ -509,6 +510,10 @@ Scene::~Scene()
 }
 
 void Scene::enterScene() {
+	SceneEvent trackEvent = Tracker::GetInstance().createSceneEvent();
+	trackEvent.setParameters(SceneNum, ENTER);
+	Tracker::GetInstance().trackEvent(&trackEvent);
+
 	CurrentState = app->getStateMachine()->currentState();
 	//Iniciamos ite, saltamos primer ite(jugador) borrarmos el resto de items copiamos nuestra lista
 	it = CurrentState->getStage()->begin();
@@ -564,6 +569,10 @@ void Scene::enterScene() {
 }
 
 void Scene::exitScene() { //al salir de la escena, todos los objetos de stage se vuelcan en la lista de la escena para que se queden guardados (menos el jugador)
+	SceneEvent trackEvent = Tracker::GetInstance().createSceneEvent();
+	trackEvent.setParameters(SceneNum, EXIT);
+	Tracker::GetInstance().trackEvent(&trackEvent);
+
 	app->getStateMachine()->currentState()->changeList();
 	SceneItems.clear();
 	SceneItems = *(app->getStateMachine()->currentState()->getStage()); //la lista stage es igual a todos los objetos de la escena

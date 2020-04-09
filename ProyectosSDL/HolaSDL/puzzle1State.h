@@ -92,7 +92,7 @@ public:
 				app->getStateMachine()->popState(false);
 			}
 		}
-		else if(!hasWon)GameState::handleEvent(event);
+		else if(!hasWon)Puzzle::handleEvent(event);
 	}
 	virtual void render() { GameState::render(); }
 	virtual void update();

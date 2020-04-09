@@ -1,5 +1,5 @@
 #include "LightsOut.h"
-
+#include <Tracker.h>
 
 
 LightsOut::LightsOut(SDLApp* app, int numCas, int dificultad, int id, bool swap) : Puzzle(app, id, swap), puzzleHasStarted(false), numCas(numCas)
@@ -81,6 +81,10 @@ void LightsOut::win(){ //comprueba que todas las luces esten encendidas
 	
 	if (_win && puzzleHasStarted) { //si gana y el puzzle ha empezado
 		Puzzle::win();
+		// USABILIDAD
+		LightPuzzleEvent trackEvent = Tracker::GetInstance().createLightPuzzleEvent();
+		trackEvent.setParameters(0, COMPLETE);
+		Tracker::GetInstance().trackEvent(&trackEvent);
 	}
 }
 
@@ -108,11 +112,20 @@ void LightsOut::receive(Mensaje* msg){
 }
 
 void LightsOut::render(){
+	if (!guarro) {
+		guarro = true;
+		// USABILIDAD
+		LightPuzzleEvent trackEvent = Tracker::GetInstance().createLightPuzzleEvent();
+		trackEvent.setParameters(0, ENTER);
+		Tracker::GetInstance().trackEvent(&trackEvent);
+	}
+
 	fadeOut();
 	GameState::render();
 }
 
 void LightsOut::handleEvent(SDL_Event & e){
+	Puzzle::handleEvent(e);
 	if (faded && !hasWon) GameState::handleEvent(e); //podria hacerlo activando los gameObjects, pero como el active no lo usamos para nada, no quiero tocar la estructura por un efecto "fancy"
 }
 
@@ -157,6 +170,13 @@ void LightsOut::restartMatrix(){
 
 void LightsOut::resetPuzzle(){
 	this->restartMatrix();
+	// USABILIDAD
+	LightPuzzleEvent trackEvent1 = Tracker::GetInstance().createLightPuzzleEvent();
+	trackEvent1.setParameters(0, EXIT);
+	Tracker::GetInstance().trackEvent(&trackEvent1);
+	LightPuzzleEvent trackEvent2 = Tracker::GetInstance().createLightPuzzleEvent();
+	trackEvent2.setParameters(0, ENTER);
+	Tracker::GetInstance().trackEvent(&trackEvent2);
 }
 
 void LightsOut::creaDecoracion(){ //como ensuciar el código 2.0

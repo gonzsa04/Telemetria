@@ -22,6 +22,8 @@ Tracker::~Tracker()
 void Tracker::Init()
 {
 	activeTrackers_.push_back(new TestTracker());
+	activeTrackers_.push_back(new DifficultyTracker());
+	activeTrackers_.push_back(new ClarityTracker());
 	_persistenceObjects.push_front(new FilePersistence());
 }
 
@@ -50,18 +52,37 @@ void Tracker::ShutDownInstance()
 	}
 }
 
-void Tracker::trackEvent(TrackerEvent* trackerEvent)
+void Tracker::trackEvent(const TrackerEvent* trackerEvent)
 {
 	list<ITrackerAsset*>::iterator it = activeTrackers_.begin();
 	while (it != activeTrackers_.end() && !(*it)->accept(trackerEvent)) { it++;	}
 	if( it != activeTrackers_.end()){
-		// Bucle por IPersistance haciendo send del event
 		for (std::list<IPersistence*>::iterator ite = _persistenceObjects.begin(); ite != _persistenceObjects.end(); ++ite)
-			(*ite)->Send(trackerEvent->toJson());
+			(*ite)->Send(trackerEvent->toJson()); // TO DO: ipersistance que reciba objetos evento en send (por dentro llamara al serialize de cada uno en flush)
 	}
 }
 
 TestEvent Tracker::createTestEvent()
 {
 	return TestEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), "kk");
+}
+
+SceneEvent Tracker::createSceneEvent()
+{
+	return SceneEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), "kk");
+}
+
+LightPuzzleEvent Tracker::createLightPuzzleEvent()
+{
+	return LightPuzzleEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), "kk");
+}
+
+Connect4Event Tracker::createConnect4Event()
+{
+	return Connect4Event(TimeManager::GetSingleton()->getTimeSinceBeginning(), "kk");
+}
+
+ClickEvent Tracker::createClickEvent()
+{
+	return ClickEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), "kk");
 }

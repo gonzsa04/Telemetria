@@ -9,7 +9,7 @@ public:
 	FilePersistence();
 	~FilePersistence();
 
-	virtual void Send(std::string str);
+	virtual void Send(const std::string str);
 
 	/// <summary>
 	/// Applies persistence to the saved tracker events

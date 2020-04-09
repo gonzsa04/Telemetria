@@ -2,6 +2,7 @@
 #include <fstream>
 #include "json.hpp"
 #include "Puzzle.h"
+#include <Tracker.h>
 
 Puzzle1State::Puzzle1State(SDLApp * game, GameState * previousState, Uint8 numberPuzzle, int numText, int id, bool swap) :Puzzle(game, id, swap), previousState(previousState), numText_(numText), _id(id)
 {
@@ -96,6 +97,14 @@ Puzzle1State::Puzzle1State(SDLApp * game, GameState * previousState, Uint8 numbe
 //---------------------------------------------------------------------------------------------------
 void Puzzle1State::update()
 {
+	if (!guarro) {
+		guarro = true;
+		// USABILIDAD
+		Connect4Event trackEvent = Tracker::GetInstance().createConnect4Event();
+		trackEvent.setParameters(0, ENTER);
+		Tracker::GetInstance().trackEvent(&trackEvent);
+	}
+
 	GameState::update();
 	if (mover) { mueveMatriz(); win(); }
 }
@@ -105,6 +114,10 @@ void Puzzle1State::win() {
 
 	if (numRestantes == 0) {
 		Puzzle::win();
+		// USABILIDAD
+		Connect4Event trackEvent1 = Tracker::GetInstance().createConnect4Event();
+		trackEvent1.setParameters(0, COMPLETE);
+		Tracker::GetInstance().trackEvent(&trackEvent1);
 	}
 }
 
@@ -292,9 +305,16 @@ void Puzzle1State::usar(GameState* state, int fil, int col)
 
 void Puzzle1State::resetFunction()
 {
-	if (!this->isMoving()) { 
-		this->restart(); 
-	} 
+	if (!this->isMoving()) {
+		this->restart();
+		// USABILIDAD
+		Connect4Event trackEvent1 = Tracker::GetInstance().createConnect4Event();
+		trackEvent1.setParameters(0, EXIT);
+		Tracker::GetInstance().trackEvent(&trackEvent1);
+		Connect4Event trackEvent2 = Tracker::GetInstance().createConnect4Event();
+		trackEvent2.setParameters(0, ENTER);
+		Tracker::GetInstance().trackEvent(&trackEvent2);
+	}
 }
 
 //---------------------------------------------------------------------------------------------------

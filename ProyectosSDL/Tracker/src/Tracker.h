@@ -25,9 +25,13 @@ public:
 	/// </summary>
 	static void ShutDownInstance();
 
-	void trackEvent(TrackerEvent* trackerEvent);
+	void trackEvent(const TrackerEvent* trackerEvent);
 
 	TestEvent createTestEvent();
+	SceneEvent createSceneEvent();
+	LightPuzzleEvent createLightPuzzleEvent();
+	Connect4Event createConnect4Event();
+	ClickEvent createClickEvent();
 
 private:
 	std::list<ITrackerAsset*> activeTrackers_;

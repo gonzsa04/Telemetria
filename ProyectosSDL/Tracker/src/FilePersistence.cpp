@@ -14,7 +14,7 @@ FilePersistence::~FilePersistence()
 {
 }
 
-void FilePersistence::Send(std::string str)
+void FilePersistence::Send(const std::string str) // TO DO: recibir const TrackEvent event
 {
 	_events.push(str);
 	std::cout << "event sent" << std::endl;
