@@ -26,47 +26,79 @@ const string TrackerEvent::toCSV() const
 const string TestEvent::toJson() const
 {
 	//Aquí se meterían los atributos especificos del evento en el json
-	return TrackerEvent::toJson();
+	string head = TrackerEvent::toJson();
+	json j;
+	//Elementos comunes del evento
+	j["userID"] = id_;
+	j["time"] = timeStamp_;
+	string info = j.dump();
+	string result = head + info;
+	return result;
 }
 
 const string TestEvent::toCSV() const
 {
 	//Aquí irían los atributos específicos del evento en csv
-	return TrackerEvent::toCSV();
+	string head = TrackerEvent::toCSV();
+	string timeStamp = to_string(timeStamp_);
+	string result = head + ",user id: " + id_ + ",time: " + timeStamp;
+	return result;
 }
 
 const string SceneEvent::toJson() const
 {
-	//Aquí se meterían los atributos especificos del evento en el json
-	return TrackerEvent::toJson();
+	//Habría que mirar la legibilidad 
+	string head = TrackerEvent::toJson();
+	json j;
+	j["Number scene"] = numScene_;
+	j["Action"] = eventActions[action_];
+	string info = j.dump();
+	string result = head + info;
+	return result;
 }
 
 const string SceneEvent::toCSV() const
 {
-	//Aquí irían los atributos específicos del evento en csv
-	return TrackerEvent::toCSV();
+	//Revisar
+	string head = TrackerEvent::toCSV();
+	string result = head + ",Number scene: " + to_string(numScene_) + ",Action: " + eventActions[action_];
+	return result;
 }
 
 const string PuzzleEvent::toJson() const
 {
-	//Aquí se meterían los atributos especificos del evento en el json
-	return TrackerEvent::toJson();
+	string head = TrackerEvent::toJson();
+	json j;
+	j["Number puzzle"] = numPuzzle_;
+	j["Action"] = eventActions[action_];
+	string info = j.dump();
+	string result = head + info;
+	return result;
 }
 
 const string PuzzleEvent::toCSV() const
 {
-	//Aquí irían los atributos específicos del evento en csv
-	return TrackerEvent::toCSV();
+	string head = TrackerEvent::toCSV();
+	string result = head + ",Number puzzle: " + to_string(numPuzzle_) + ",Action: " + eventActions[action_];
+	return result;
 }
 
 const string ClickEvent::toJson() const
 {
-	//Aquí se meterían los atributos especificos del evento en el json
-	return TrackerEvent::toJson();
+	string head = TrackerEvent::toJson();
+	json j;
+	j["Number scene"] = numScene_;
+	j["Position_X"] = pos_.first;
+	j["Position_Y"] = pos_.second;
+	string info = j.dump();
+	string result = head + info;
+	return result;
 }
 
 const string ClickEvent::toCSV() const
 {
-	//Aquí irían los atributos específicos del evento en csv
-	return TrackerEvent::toCSV();
+	string head = TrackerEvent::toCSV();
+	string result = head + ",Number puzzle: " + to_string(numScene_) + ",Position_X: " + to_string(pos_.first) +
+		",Position_Y: " + to_string(pos_.second);
+	return result;
 }
