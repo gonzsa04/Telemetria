@@ -3,6 +3,9 @@
 #include "TimeManager.h"
 #include "IPersistence.h"
 #include "FilePersistence.h"
+#include "sha256.h"
+#include <ctime>
+#include <iostream>
 
 // Static variable for the singleton
 Tracker * Tracker::_instance = nullptr;
@@ -25,6 +28,8 @@ void Tracker::Init()
 	activeTrackers_.push_back(new DifficultyTracker());
 	activeTrackers_.push_back(new ClarityTracker());
 	_persistenceObjects.push_front(new FilePersistence());
+
+	generateSessionId();
 }
 
 void Tracker::End()
@@ -62,27 +67,54 @@ void Tracker::trackEvent(const TrackerEvent* trackerEvent)
 	}
 }
 
+SessionStartEvent Tracker::createSessionStartEvent()
+{
+	return SessionStartEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
+}
+
+SessionEndEvent Tracker::createSessionEndEvent()
+{
+	return SessionEndEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
+}
+
 TestEvent Tracker::createTestEvent()
 {
-	return TestEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), "kk");
+	return TestEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
 }
 
 SceneEvent Tracker::createSceneEvent()
 {
-	return SceneEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), "kk");
+	return SceneEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
 }
 
 LightPuzzleEvent Tracker::createLightPuzzleEvent()
 {
-	return LightPuzzleEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), "kk");
+	return LightPuzzleEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
 }
 
 Connect4Event Tracker::createConnect4Event()
 {
-	return Connect4Event(TimeManager::GetSingleton()->getTimeSinceBeginning(), "kk");
+	return Connect4Event(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
 }
 
-ClickEvent Tracker::createClickEvent()
+ClickSceneEvent Tracker::createClickSceneEvent()
 {
-	return ClickEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), "kk");
+	return ClickSceneEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
+}
+
+ClickPuzzleEvent Tracker::createClickPuzzleEvent()
+{
+	return ClickPuzzleEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
+}
+
+void Tracker::generateSessionId()
+{
+	time_t now = time(0);
+
+	// convert now to string form
+	char* dt = ctime(&now);
+
+	id_ = sha256(dt);
+
+	std::cout << id_ << " " << dt << std::endl;
 }

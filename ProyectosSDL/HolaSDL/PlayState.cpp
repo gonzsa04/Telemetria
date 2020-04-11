@@ -37,6 +37,7 @@ void PlayState::SetZBuffer() //try tongue
 }
 
 PlayState::PlayState(SDLApp* app, bool load) : GameState(app) {
+	Puzzle::numPuzzle = 0;
 
 	// crea la lista vacia
 	list = new ObjectList(app);
@@ -135,7 +136,7 @@ void PlayState::swapScene(int nextScene)
 void PlayState::handleEvent(SDL_Event & e) {
 	if (e.type == SDL_MOUSEBUTTONDOWN) { 
 		// USABILIDAD
-		ClickEvent sceneEvent = Tracker::GetInstance().createClickEvent();
+		ClickSceneEvent sceneEvent = Tracker::GetInstance().createClickSceneEvent();
 		sceneEvent.setParameters(currentScene, { e.button.x, e.button.y });
 		Tracker::GetInstance().trackEvent(&sceneEvent);
 	}

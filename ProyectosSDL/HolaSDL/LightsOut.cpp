@@ -83,7 +83,7 @@ void LightsOut::win(){ //comprueba que todas las luces esten encendidas
 		Puzzle::win();
 		// USABILIDAD
 		LightPuzzleEvent trackEvent = Tracker::GetInstance().createLightPuzzleEvent();
-		trackEvent.setParameters(0, COMPLETE);
+		trackEvent.setParameters(numPuzzle_, COMPLETE);
 		Tracker::GetInstance().trackEvent(&trackEvent);
 	}
 }
@@ -116,7 +116,7 @@ void LightsOut::render(){
 		guarro = true;
 		// USABILIDAD
 		LightPuzzleEvent trackEvent = Tracker::GetInstance().createLightPuzzleEvent();
-		trackEvent.setParameters(0, ENTER);
+		trackEvent.setParameters(numPuzzle_, ENTER);
 		Tracker::GetInstance().trackEvent(&trackEvent);
 	}
 
@@ -172,10 +172,10 @@ void LightsOut::resetPuzzle(){
 	this->restartMatrix();
 	// USABILIDAD
 	LightPuzzleEvent trackEvent1 = Tracker::GetInstance().createLightPuzzleEvent();
-	trackEvent1.setParameters(0, EXIT);
+	trackEvent1.setParameters(numPuzzle_, EXIT);
 	Tracker::GetInstance().trackEvent(&trackEvent1);
 	LightPuzzleEvent trackEvent2 = Tracker::GetInstance().createLightPuzzleEvent();
-	trackEvent2.setParameters(0, ENTER);
+	trackEvent2.setParameters(numPuzzle_, ENTER);
 	Tracker::GetInstance().trackEvent(&trackEvent2);
 }
 

@@ -152,6 +152,21 @@
          "y": 435.0
       }
    ],
+   "GOState": [
+      {
+         "Texture": 29,
+         "UnlockId": 1,
+         "dificultad": 2,
+         "h": 30.0,
+         "numCas": 3,
+         "rotation": -45,
+         "soundEffect": 1,
+         "type": 1,
+         "w": 30.0,
+         "x": 610.0,
+         "y": 305.0
+      }
+   ],
    "GOTransiciones": [
       {
          "Texture": 29,
@@ -170,7 +185,7 @@
       {
          "Texture": 237,
          "UnlockId": 1,
-         "canWork": true,
+         "canWork": false,
          "h": 34.0,
          "maxAlpha": 220,
          "minAlpha": 0,
@@ -296,7 +311,7 @@
       }
    ],
    "PlayerPos": {
-      "x": 546.0,
+      "x": 486.0,
       "y": 225.6
    },
    "PlayerTam": {

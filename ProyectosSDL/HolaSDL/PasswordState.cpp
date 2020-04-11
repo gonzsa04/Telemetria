@@ -22,6 +22,7 @@ PasswordState::~PasswordState()
 
 PasswordState::PasswordState(SDLApp * app, int PosFontX, int PosFontY, string password, int id, int txt, bool swap): Puzzle(app, id, swap), password_(password), posFontX_(PosFontX), posFontY_(PosFontY)
 {
+	numPuzzle--;
 	press = MouseEventAnimComponent(SDL_MOUSEBUTTONDOWN, "Pressed", "Stop", SDL_BUTTON_LEFT);
 
 	f = new Font("..//images/Dialogos/Moonace-Regular.ttf", 50);

@@ -2,6 +2,7 @@
 
 #include <list>
 #include "TrackerEvents.h"
+#include <string>
 
 struct ITrackerAsset;
 class IPersistence;
@@ -31,10 +32,18 @@ public:
 	SceneEvent createSceneEvent();
 	LightPuzzleEvent createLightPuzzleEvent();
 	Connect4Event createConnect4Event();
-	ClickEvent createClickEvent();
+	ClickSceneEvent createClickSceneEvent();
+	ClickPuzzleEvent createClickPuzzleEvent();
+	SessionStartEvent createSessionStartEvent();
+	SessionEndEvent createSessionEndEvent();
 
 private:
+
+	void generateSessionId();
+
 	std::list<ITrackerAsset*> activeTrackers_;
+
+	std::string id_;
 
 	static Tracker* _instance;
 	std::list<IPersistence*> _persistenceObjects;

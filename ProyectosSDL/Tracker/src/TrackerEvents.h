@@ -7,18 +7,26 @@ using namespace std;
 // TIPOS DE LOS EVENTOS
 enum EventType	{ 
 	TEST_EVENT,
+	SESSION_START_EVENT,
+	SESSION_END_EVENT,
 	SCENE_EVENT,
 	LIGHTPUZZLE_EVENT,
 	CONNECT4_EVENT,
-	CLICK_EVENT
+	CLICK_EVENT,
+	CLICK_EVENT_SCENE,
+	CLICK_EVENT_PUZZLE
 };
 
 const std::string eventTypes[] = {
 	"TEST_EVENT",
+	"SESSION_START_EVENT",
+	"SESSION_END_EVENT",
 	"SCENE_EVENT",
 	"LIGHTPUZZLE_EVENT",
 	"CONNECT4_EVENT",
 	"CLICK_EVENT"
+	"CLICK_EVENT_SCENE",
+	"CLICK_EVENT_PUZZLE"
 };
 
 // transforma el tipo de evento en un string (su nombre legible)
@@ -73,6 +81,17 @@ public:
 	virtual const string toCSV() const;
 };
 
+//EVENTOS DE INICIO Y FIN DE SESION
+struct SessionStartEvent : public TrackerEvent {
+public:
+	SessionStartEvent(double timeStamp, string id) : TrackerEvent(timeStamp, id, SESSION_START_EVENT) { std::cout << "SESSION START " << std::endl; }
+};
+
+struct SessionEndEvent : public TrackerEvent {
+public:
+	SessionEndEvent(double timeStamp, string id) : TrackerEvent(timeStamp, id, SESSION_END_EVENT) { std::cout << "SESSION END " << std::endl; }
+};
+
 // EVENTO DE ESCENA
 struct SceneEvent : public TrackerEvent {
 private:
@@ -116,17 +135,44 @@ public:
 
 // EVENTO DE CLICK DEL JUGADOR
 struct ClickEvent : public TrackerEvent {
-private:
-	int numScene_;
+protected:
 	std::pair<int, int> pos_;
+	ClickEvent(double timeStamp, string id, EventType type) : TrackerEvent(timeStamp, id, type), pos_({ 0, 0 }) {}
 
 public:
-	ClickEvent(double timeStamp, string id) : TrackerEvent(timeStamp, id, CLICK_EVENT), numScene_(0), pos_({ 0, 0 }) {}
-	inline void setParameters(int numScene, std::pair<int, int> pos) { numScene_ = numScene; pos_ = pos; std::cout << "CLICK " << numScene_ << " " << pos_.first << " " << pos_.second << std::endl;
+	inline void setParameters(std::pair<int, int> pos) { pos_ = pos; }
+
+	virtual const string toJson() const;
+	virtual const string toCSV() const;
+};
+
+struct ClickSceneEvent : public ClickEvent {
+private:
+	int numScene_;
+
+public:
+	ClickSceneEvent(double timeStamp, string id) : ClickEvent(timeStamp, id, CLICK_EVENT_SCENE), numScene_(0) {}
+	inline void setParameters(int numScene, std::pair<int, int> pos) {
+		ClickEvent::setParameters(pos),	numScene_ = numScene; std::cout << "CLICK SCENE " << numScene_ << " " << pos_.first << " " << pos_.second << std::endl;
 	}
 	virtual const string toJson() const;
 	virtual const string toCSV() const;
 };
+
+
+struct ClickPuzzleEvent : public ClickEvent {
+private:
+	int numPuzzle_;
+
+public:
+	ClickPuzzleEvent(double timeStamp, string id) : ClickEvent(timeStamp, id, CLICK_EVENT_PUZZLE), numPuzzle_(0) {}
+	inline void setParameters(int numPuzzle, std::pair<int, int> pos) {
+		ClickEvent::setParameters(pos), numPuzzle_ = numPuzzle; std::cout << "CLICK PUZZLE " << numPuzzle_ << " " << pos_.first << " " << pos_.second << std::endl;
+	}
+	virtual const string toJson() const;
+	virtual const string toCSV() const;
+};
+
 
 
 

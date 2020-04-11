@@ -87,7 +87,6 @@ const string ClickEvent::toJson() const
 {
 	string head = TrackerEvent::toJson();
 	json j;
-	j["Number scene"] = numScene_;
 	j["Position_X"] = pos_.first;
 	j["Position_Y"] = pos_.second;
 	string info = j.dump();
@@ -98,7 +97,43 @@ const string ClickEvent::toJson() const
 const string ClickEvent::toCSV() const
 {
 	string head = TrackerEvent::toCSV();
-	string result = head + ",Number puzzle: " + to_string(numScene_) + ",Position_X: " + to_string(pos_.first) +
+	string result = head + ",Position_X: " + to_string(pos_.first) +
 		",Position_Y: " + to_string(pos_.second);
+	return result;
+}
+
+const string ClickSceneEvent::toJson() const
+{
+	string head = ClickEvent::toJson();
+	json j;
+	j["Number scene"] = numScene_;
+	string info = j.dump();
+	string result = head + info;
+	
+	return result;
+}
+
+const string ClickSceneEvent::toCSV() const
+{
+	string head = ClickEvent::toCSV();
+	string result = head + ",Number scene: " + to_string(numScene_);
+	return result;
+}
+
+const string ClickPuzzleEvent::toJson() const
+{
+	string head = ClickEvent::toJson();
+	json j;
+	j["Number puzzle"] = numPuzzle_;
+	string info = j.dump();
+	string result = head + info;
+
+	return result;
+}
+
+const string ClickPuzzleEvent::toCSV() const
+{
+	string head = ClickEvent::toCSV();
+	string result = head + ",Number puzzle: " + to_string(numPuzzle_);
 	return result;
 }

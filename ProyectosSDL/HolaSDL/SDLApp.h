@@ -38,7 +38,7 @@ private:
 	bool introDone_ = false;
 public:
 	SDLApp(int w, int h);
-	~SDLApp() { this->closeSDL(); };
+	~SDLApp() {};
 	GameStateMachine* getStateMachine(); //return de la maquina de estados
 	void update(); //invoca el update del currentState
 	void render(); //invoca el render del currentState

@@ -7,10 +7,14 @@
 #include "TransitionScreen.h"
 #include "IntroState.h"
 #include "CreditosState.h"
+#include <Tracker.h>
 
 
 SDLApp::SDLApp(int w, int h): winWidth(w), winHeight(h)
 {
+	SessionStartEvent startEvent = Tracker::GetInstance().createSessionStartEvent();
+	Tracker::GetInstance().trackEvent(&startEvent);
+
 	srand(time(NULL)); //inicia la seed del random para que genere distintos numeros siempre que compilemos
 	window = nullptr;
 	renderer = nullptr;
@@ -66,6 +70,9 @@ void SDLApp::closeSDL() {
 	renderer = nullptr; 
 	SDL_DestroyWindow(window); 
 	window = nullptr; SDL_Quit();
+
+	SessionEndEvent endEvent = Tracker::GetInstance().createSessionEndEvent();
+	Tracker::GetInstance().trackEvent(&endEvent);
 }
 //---------------------------Gets-------------------------
 SDL_Window* SDLApp::getWindow() const {

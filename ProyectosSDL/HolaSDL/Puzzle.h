@@ -18,10 +18,15 @@ protected:
 	
 	bool guarro = false;
 
+	int numPuzzle_;
+
 public:
 	Puzzle() {};
-	Puzzle(SDLApp* app, int id = -4, bool swapScene = false) : GameState(app), id(id), swapScene(swapScene) { function<void()> fun = [this]()mutable {this->winner(); }; timingSalida = new GOTimer(800, fun); this->stage.push_back(timingSalida); };
+	Puzzle(SDLApp* app, int id = -4, bool swapScene = false) : GameState(app), id(id), swapScene(swapScene) { function<void()> fun = [this]()mutable {this->winner(); }; timingSalida = new GOTimer(800, fun); this->stage.push_back(timingSalida); 
+	numPuzzle_ = numPuzzle; numPuzzle++; };
 	~Puzzle();
+
+	static int numPuzzle;
 
 	virtual void handleEvent(SDL_Event& e);
 
