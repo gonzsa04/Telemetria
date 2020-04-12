@@ -18,7 +18,7 @@ public:
 
 private:
 
-	ConcurrentQueue<TrackerEvent> _events;
+	ConcurrentQueue<const TrackerEvent*> _events;
 	std::string _commonPath;
 	std::string _filename;
 };

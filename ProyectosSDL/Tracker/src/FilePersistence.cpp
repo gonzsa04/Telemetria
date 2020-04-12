@@ -32,21 +32,19 @@ FilePersistence::~FilePersistence()
 
 void FilePersistence::Send(const TrackerEvent* trackerEvent) // TO DO: recibir const TrackEvent event
 {
-	_events.push(*trackerEvent);
+	_events.push(trackerEvent);
 	std::cout << "event sent" << std::endl;
-	Flush();
 }
 
 void FilePersistence::Flush()
 {
 	if (!_events.empty())
 	{
-	
 		std::ofstream file; 
 		
 		while (!_events.empty()) //write pending events
 		{
-			TrackerEvent tEvent = _events.pop();
+			const TrackerEvent* tEvent = _events.pop();
 
 			for (std::list<ISerializer*>::iterator it = _serializeObjects.begin(); it != _serializeObjects.end(); ++it)
 			{
@@ -55,7 +53,7 @@ void FilePersistence::Flush()
 
 				file.open(path, std::ios::out | std::ios::app);
 
-				std::string event = (*it)->Serialize(&tEvent);//_events.pop().toJson();
+				std::string event = (*it)->Serialize(tEvent);//_events.pop().toJson();
 				file << event << '\n';
 
 				file.close();
