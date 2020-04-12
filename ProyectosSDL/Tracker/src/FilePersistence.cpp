@@ -13,15 +13,16 @@
 FilePersistence::FilePersistence()
 {
 	//Gets files' path & creates directory if it doesn't exist
-	_path = _SOLUTIONDIR;
-	_path += "\logs\\";
-	_mkdir(_path.c_str());
+	_commonPath = _SOLUTIONDIR;
+	_commonPath += "\logs\\";
+	_mkdir(_commonPath.c_str());
 
-	//Common file name
-	_path.append("\\" + Tracker::GetInstance().GetSessionID());
-	std::cout << "PATH: " << _path << std::endl;
+	//Common path file name
+	_commonPath.append("\\" + Tracker::GetInstance().GetSessionID());
 
+	_serializeObjects.push_back(new JsonSerializer());
 	_serializeObjects.push_back(new CSVSerializer());
+
 }
 
 
@@ -33,6 +34,7 @@ void FilePersistence::Send(const TrackerEvent* trackerEvent) // TO DO: recibir c
 {
 	_events.push(*trackerEvent);
 	std::cout << "event sent" << std::endl;
+	Flush();
 }
 
 void FilePersistence::Flush()
@@ -40,21 +42,26 @@ void FilePersistence::Flush()
 	if (!_events.empty())
 	{
 	
-		std::string path;
-		path.append(_path + _serializeObjects.front()->Format());
-
 		std::ofstream file; 
 		
-		file.open(path, std::ios::out | std::ios::app);
-
 		while (!_events.empty()) //write pending events
 		{
 			TrackerEvent tEvent = _events.pop();
-			std::string event = _serializeObjects.front()->Serialize(&tEvent);//_events.pop().toJson();
-			file << event << '\n';
-		}
 
-		file.close();
+			for (std::list<ISerializer*>::iterator it = _serializeObjects.begin(); it != _serializeObjects.end(); ++it)
+			{
+				std::string path;
+				path.append(_commonPath + (*it)->Format());
+
+				file.open(path, std::ios::out | std::ios::app);
+
+				std::string event = (*it)->Serialize(&tEvent);//_events.pop().toJson();
+				file << event << '\n';
+
+				file.close();
+
+			}	
+		}
 	}
 
 	std::cout << "event written" << std::endl;

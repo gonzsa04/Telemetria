@@ -9,18 +9,17 @@ public:
 	FilePersistence();
 	~FilePersistence();
 
-	virtual void Send(const TrackerEvent* trackerEvent);
+	void Send(const TrackerEvent* trackerEvent);
 
 	/// <summary>
 	/// Applies persistence to the saved tracker events
 	/// </summary>
-	virtual void Flush();
+	void Flush();
 
 private:
 
 	ConcurrentQueue<TrackerEvent> _events;
-	std::string _path;
+	std::string _commonPath;
 	std::string _filename;
-
 };
 
