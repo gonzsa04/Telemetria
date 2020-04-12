@@ -4,8 +4,8 @@ JsonSerializer::JsonSerializer() {
 
 }
 
-string JsonSerializer::Serialize(TestEvent event) {
-	return event.toJson();
+string JsonSerializer::Serialize(const TrackerEvent* event) {
+	return event->toJson();
 }
 
 JsonSerializer::~JsonSerializer()

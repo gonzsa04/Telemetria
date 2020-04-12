@@ -1,10 +1,14 @@
 #include "FilePersistence.h"
 #include "Tracker.h"
+#include "JsonSerializer.h"
+#include "CSVSerializer.h"
 #include <iostream>
 #include <fstream>
+
 #include <stdio.h>
 #include <direct.h>
 #include <stdlib.h>
+
 
 FilePersistence::FilePersistence()
 {
@@ -16,6 +20,8 @@ FilePersistence::FilePersistence()
 	//Common file name
 	_path.append("\\" + Tracker::GetInstance().GetSessionID());
 	std::cout << "PATH: " << _path << std::endl;
+
+	_serializeObjects.push_back(new CSVSerializer());
 }
 
 
@@ -33,15 +39,18 @@ void FilePersistence::Flush()
 {
 	if (!_events.empty())
 	{
-		_path += ".json";
+	
+		std::string path;
+		path.append(_path + _serializeObjects.front()->Format());
 
 		std::ofstream file; 
 		
-		file.open(_path, std::ios::out | std::ios::app);
+		file.open(path, std::ios::out | std::ios::app);
 
 		while (!_events.empty()) //write pending events
 		{
-			std::string event = _events.pop().toJson();
+			TrackerEvent tEvent = _events.pop();
+			std::string event = _serializeObjects.front()->Serialize(&tEvent);//_events.pop().toJson();
 			file << event << '\n';
 		}
 

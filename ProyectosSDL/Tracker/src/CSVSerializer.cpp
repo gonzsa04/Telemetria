@@ -6,8 +6,8 @@ CSVSerializer::CSVSerializer()
 {
 }
 
-string CSVSerializer::Serialize(TestEvent event) {
-	return event.toCSV();
+string CSVSerializer::Serialize(const TrackerEvent* event) {
+	return event->toCSV();
 }
 
 CSVSerializer::~CSVSerializer()

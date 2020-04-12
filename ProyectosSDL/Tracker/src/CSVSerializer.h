@@ -12,7 +12,11 @@ class CSVSerializer: public ISerializer
 {
 public:
 	CSVSerializer();
-	string Serialize(TestEvent event);
+
+	string Serialize(const TrackerEvent* event);
+
+	inline string Format() { return ".csv"; };
+
 	~CSVSerializer();
 };
 

@@ -1,6 +1,8 @@
 #pragma once
 #include "TrackerEvents.h"
+#include "ISerializer.h"
 #include <string>
+#include <list>
 
 class IPersistence
 {
@@ -17,5 +19,8 @@ public:
 	/// Applies persistence to the saved tracker events
 	/// </summary>
 	virtual void Flush() = 0;
+
+protected:
+	std::list<ISerializer*> _serializeObjects;
 };
 

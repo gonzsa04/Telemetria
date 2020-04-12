@@ -12,6 +12,10 @@ class JsonSerializer : public ISerializer
 {
 public:
 	JsonSerializer();
-	string Serialize(TestEvent event);
+	
+	string Serialize(const TrackerEvent* event);
+
+	inline string Format() { return ".json"; };
+
 	~JsonSerializer();
 };
