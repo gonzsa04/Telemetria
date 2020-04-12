@@ -27,9 +27,10 @@ void Tracker::Init()
 	activeTrackers_.push_back(new TestTracker());
 	activeTrackers_.push_back(new DifficultyTracker());
 	activeTrackers_.push_back(new ClarityTracker());
-	_persistenceObjects.push_front(new FilePersistence());
 
 	generateSessionId();
+
+	_persistenceObjects.push_front(new FilePersistence());
 }
 
 void Tracker::End()
@@ -63,7 +64,7 @@ void Tracker::trackEvent(const TrackerEvent* trackerEvent)
 	while (it != activeTrackers_.end() && !(*it)->accept(trackerEvent)) { it++;	}
 	if( it != activeTrackers_.end()){
 		for (std::list<IPersistence*>::iterator ite = _persistenceObjects.begin(); ite != _persistenceObjects.end(); ++ite)
-			(*ite)->Send(trackerEvent->toJson()); // TO DO: ipersistance que reciba objetos evento en send (por dentro llamara al serialize de cada uno en flush)
+			(*ite)->Send(trackerEvent); // TO DO: ipersistance que reciba objetos evento en send (por dentro llamara al serialize de cada uno en flush)
 	}
 }
 

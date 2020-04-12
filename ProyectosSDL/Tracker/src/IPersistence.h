@@ -1,5 +1,5 @@
 #pragma once
-
+#include "TrackerEvents.h"
 #include <string>
 
 class IPersistence
@@ -11,7 +11,7 @@ public:
 	/// <summary>
 	/// A tracker event is stored in the queue
 	/// </summary>
-	virtual void Send(std::string str) = 0;
+	virtual void Send(const TrackerEvent* trackerEvent) = 0;
 
 	/// <summary>
 	/// Applies persistence to the saved tracker events

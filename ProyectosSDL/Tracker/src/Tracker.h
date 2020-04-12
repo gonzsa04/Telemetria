@@ -37,6 +37,8 @@ public:
 	SessionStartEvent createSessionStartEvent();
 	SessionEndEvent createSessionEndEvent();
 
+	inline std::string GetSessionID() { return id_; };
+
 private:
 
 	void generateSessionId();

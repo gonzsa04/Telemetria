@@ -1,4 +1,5 @@
 #include "FilePersistence.h"
+#include "Tracker.h"
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
@@ -7,6 +8,14 @@
 
 FilePersistence::FilePersistence()
 {
+	//Gets files' path & creates directory if it doesn't exist
+	_path = _SOLUTIONDIR;
+	_path += "\logs\\";
+	_mkdir(_path.c_str());
+
+	//Common file name
+	_path.append("\\" + Tracker::GetInstance().GetSessionID());
+	std::cout << "PATH: " << _path << std::endl;
 }
 
 
@@ -14,9 +23,9 @@ FilePersistence::~FilePersistence()
 {
 }
 
-void FilePersistence::Send(const std::string str) // TO DO: recibir const TrackEvent event
+void FilePersistence::Send(const TrackerEvent* trackerEvent) // TO DO: recibir const TrackEvent event
 {
-	_events.push(str);
+	_events.push(*trackerEvent);
 	std::cout << "event sent" << std::endl;
 }
 
@@ -24,24 +33,22 @@ void FilePersistence::Flush()
 {
 	if (!_events.empty())
 	{
-		std::string path = _SOLUTIONDIR;
-		path += "\logs\\";
-		_mkdir(path.c_str()); //creates directory if it doesn't exist
-
-		std::string filename = "\\userID.json";
-		path += filename;
+		_path += ".json";
 
 		std::ofstream file; 
 		
-		file.open(path, std::ios::out | std::ios::app);
+		file.open(_path, std::ios::out | std::ios::app);
 
 		while (!_events.empty()) //write pending events
 		{
-			std::string event = _events.pop();
+			std::string event = _events.pop().toJson();
 			file << event << '\n';
 		}
 
 		file.close();
 	}
+
+	std::cout << "event written" << std::endl;
+
 }
 
