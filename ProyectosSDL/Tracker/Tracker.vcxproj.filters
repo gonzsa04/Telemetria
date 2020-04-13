@@ -40,6 +40,12 @@
     <ClInclude Include="src\IPersistence.h">
       <Filter>Persistence</Filter>
     </ClInclude>
+    <ClInclude Include="src\ServerPersistence.h">
+      <Filter>Persistence</Filter>
+    </ClInclude>
+    <ClInclude Include="src\HTTPRequest.hpp">
+      <Filter>Extern</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\sha256.cpp">
@@ -61,6 +67,9 @@
       <Filter>Serializer</Filter>
     </ClCompile>
     <ClCompile Include="src\FilePersistence.cpp">
+      <Filter>Persistence</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ServerPersistence.cpp">
       <Filter>Persistence</Filter>
     </ClCompile>
   </ItemGroup>

@@ -3,6 +3,7 @@
 #include "ISerializer.h"
 #include <string>
 #include <list>
+#include "ConcurrentQueue.h"
 
 class IPersistence
 {
@@ -22,5 +23,7 @@ public:
 
 protected:
 	std::list<ISerializer*> _serializeObjects;
+	ConcurrentQueue<const TrackerEvent*> _events;
+
 };
 

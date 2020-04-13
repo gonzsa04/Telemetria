@@ -15,7 +15,7 @@ public:
 	
 	string Serialize(const TrackerEvent* event);
 
-	inline string Format() { return ".json"; };
+	inline string Format() { return "json"; };
 
 	~JsonSerializer();
 };

@@ -1,15 +1,13 @@
 #pragma once
-
 #include "IPersistence.h"
 
-class FilePersistence : public IPersistence
+class ServerPersistence : public IPersistence
 {
 public:
-	FilePersistence();
-	~FilePersistence();
+	ServerPersistence();
 
 	/// <summary>
-	/// Stores the event in the queue
+	/// Applies persistence to the saved tracker events
 	/// </summary>
 	void Send(const TrackerEvent* trackerEvent);
 
@@ -18,9 +16,6 @@ public:
 	/// </summary>
 	void Flush();
 
-private:
-
-	std::string _commonPath;
-	std::string _filename;
+	~ServerPersistence();
 };
 

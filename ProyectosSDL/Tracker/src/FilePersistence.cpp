@@ -18,7 +18,7 @@ FilePersistence::FilePersistence()
 	_mkdir(_commonPath.c_str());
 
 	//Common path file name
-	_commonPath.append("\\" + Tracker::GetInstance().GetSessionID());
+	_commonPath.append("\\" + Tracker::GetInstance().GetSessionID() + ".");
 
 	_serializeObjects.push_back(new JsonSerializer());
 	_serializeObjects.push_back(new CSVSerializer());
@@ -53,7 +53,7 @@ void FilePersistence::Flush()
 
 				file.open(path, std::ios::out | std::ios::app);
 
-				std::string event = (*it)->Serialize(tEvent);//_events.pop().toJson();
+				std::string event = (*it)->Serialize(tEvent);
 				file << event << '\n';
 
 				file.close();
