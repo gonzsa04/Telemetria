@@ -20,7 +20,6 @@ public:
 
 private:
 
-	std::string _commonPath;
-	std::string _filename;
+	std::string _commonPath; //directory path where the file is written 
 };
 

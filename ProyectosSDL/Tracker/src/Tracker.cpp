@@ -3,6 +3,7 @@
 #include "TimeManager.h"
 #include "IPersistence.h"
 #include "FilePersistence.h"
+#include "ServerPersistence.h"
 #include "sha256.h"
 #include <ctime>
 #include <iostream>
@@ -31,7 +32,8 @@ void Tracker::Init()
 
 	generateSessionId();
 
-	_persistenceObjects.push_front(new FilePersistence());
+	_persistenceObjects.push_back(new FilePersistence());
+	_persistenceObjects.push_back(new ServerPersistence());
 }
 
 void Tracker::End()

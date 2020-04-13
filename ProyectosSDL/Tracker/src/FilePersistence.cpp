@@ -20,6 +20,7 @@ FilePersistence::FilePersistence()
 	//Common path file name
 	_commonPath.append("\\" + Tracker::GetInstance().GetSessionID() + ".");
 
+	//Active formats
 	_serializeObjects.push_back(new JsonSerializer());
 	_serializeObjects.push_back(new CSVSerializer());
 
@@ -28,9 +29,14 @@ FilePersistence::FilePersistence()
 
 FilePersistence::~FilePersistence()
 {
+	while (!_serializeObjects.empty())
+	{
+		_serializeObjects.pop_back();
+	}
 }
 
-void FilePersistence::Send(const TrackerEvent* trackerEvent)
+/// Stores the event in the queue
+void FilePersistence::Send(const TrackerEvent* trackerEvent) 
 {
 	_events.push(trackerEvent);
 	if (_events.size() >= MAX_EVENTS) 
@@ -38,6 +44,7 @@ void FilePersistence::Send(const TrackerEvent* trackerEvent)
 	std::cout << "event sent" << std::endl;
 }
 
+/// Applies persistence to the stored events in the queue
 void FilePersistence::Flush()
 {
 	if (!_events.empty())
@@ -48,6 +55,7 @@ void FilePersistence::Flush()
 		{
 			const TrackerEvent* tEvent = _events.pop();
 
+			//serializes the event in all availlable formats
 			for (std::list<ISerializer*>::iterator it = _serializeObjects.begin(); it != _serializeObjects.end(); ++it)
 			{
 				std::string path;
@@ -55,8 +63,8 @@ void FilePersistence::Flush()
 
 				file.open(path, std::ios::out | std::ios::app);
 
-				std::string event = (*it)->Serialize(tEvent);
-				file << event << '\n';
+				std::string event = (*it)->Serialize(tEvent); 
+				file << event << '\n'; //writes the event to the file
 
 				file.close();
 
@@ -64,8 +72,5 @@ void FilePersistence::Flush()
 			delete tEvent;
 		}
 	}
-
-	std::cout << "event written" << std::endl;
-
 }
 

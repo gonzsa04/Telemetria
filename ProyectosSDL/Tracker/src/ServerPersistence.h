@@ -7,12 +7,12 @@ public:
 	ServerPersistence();
 
 	/// <summary>
-	/// Applies persistence to the saved tracker events
+	/// A tracker event is stored in the queue
 	/// </summary>
 	void Send(const TrackerEvent* trackerEvent);
 
 	/// <summary>
-	/// Applies persistence to the stored events in the queue
+	/// Applies persistence to the stored events in the queue sending them to a server
 	/// </summary>
 	void Flush();
 

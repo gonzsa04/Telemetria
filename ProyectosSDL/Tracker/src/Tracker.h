@@ -48,5 +48,5 @@ private:
 	std::string id_;
 
 	static Tracker* _instance;
-	std::list<IPersistence*> _persistenceObjects;
+	std::list<IPersistence*> _persistenceObjects; //active persistence types
 };
