@@ -99,9 +99,9 @@ void Puzzle1State::update()
 	if (!guarro) {
 		guarro = true;
 		// USABILIDAD
-		Connect4Event trackEvent = Tracker::GetInstance().createConnect4Event();
-		trackEvent.setParameters(numPuzzle_, ENTER);
-		Tracker::GetInstance().trackEvent(&trackEvent);
+		Connect4Event* trackEvent = Tracker::GetInstance().createConnect4Event();
+		trackEvent->setParameters(numPuzzle_, ENTER);
+		Tracker::GetInstance().trackEvent(trackEvent);
 	}
 
 	GameState::update();
@@ -114,9 +114,9 @@ void Puzzle1State::win() {
 	if (numRestantes == 0) {
 		Puzzle::win();
 		// USABILIDAD
-		Connect4Event trackEvent1 = Tracker::GetInstance().createConnect4Event();
-		trackEvent1.setParameters(numPuzzle_, COMPLETE);
-		Tracker::GetInstance().trackEvent(&trackEvent1);
+		Connect4Event* trackEvent1 = Tracker::GetInstance().createConnect4Event();
+		trackEvent1->setParameters(numPuzzle_, COMPLETE);
+		Tracker::GetInstance().trackEvent(trackEvent1);
 	}
 }
 
@@ -307,12 +307,12 @@ void Puzzle1State::resetFunction()
 	if (!this->isMoving()) {
 		this->restart();
 		// USABILIDAD
-		Connect4Event trackEvent1 = Tracker::GetInstance().createConnect4Event();
-		trackEvent1.setParameters(numPuzzle_, EXIT);
-		Tracker::GetInstance().trackEvent(&trackEvent1);
-		Connect4Event trackEvent2 = Tracker::GetInstance().createConnect4Event();
-		trackEvent2.setParameters(numPuzzle_, ENTER);
-		Tracker::GetInstance().trackEvent(&trackEvent2);
+		Connect4Event* trackEvent1 = Tracker::GetInstance().createConnect4Event();
+		trackEvent1->setParameters(numPuzzle_, EXIT);
+		Tracker::GetInstance().trackEvent(trackEvent1);
+		Connect4Event* trackEvent2 = Tracker::GetInstance().createConnect4Event();
+		trackEvent2->setParameters(numPuzzle_, ENTER);
+		Tracker::GetInstance().trackEvent(trackEvent2);
 	}
 }
 

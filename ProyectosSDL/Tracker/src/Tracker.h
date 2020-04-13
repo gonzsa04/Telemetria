@@ -28,14 +28,14 @@ public:
 
 	void trackEvent(const TrackerEvent* trackerEvent);
 
-	TestEvent createTestEvent();
-	SceneEvent createSceneEvent();
-	LightPuzzleEvent createLightPuzzleEvent();
-	Connect4Event createConnect4Event();
-	ClickSceneEvent createClickSceneEvent();
-	ClickPuzzleEvent createClickPuzzleEvent();
-	SessionStartEvent createSessionStartEvent();
-	SessionEndEvent createSessionEndEvent();
+	TestEvent* createTestEvent();
+	SceneEvent* createSceneEvent();
+	LightPuzzleEvent* createLightPuzzleEvent();
+	Connect4Event* createConnect4Event();
+	ClickSceneEvent* createClickSceneEvent();
+	ClickPuzzleEvent* createClickPuzzleEvent();
+	SessionStartEvent* createSessionStartEvent();
+	SessionEndEvent* createSessionEndEvent();
 
 	inline std::string GetSessionID() { return id_; };
 

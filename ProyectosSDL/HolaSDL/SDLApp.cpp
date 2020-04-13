@@ -12,8 +12,8 @@
 
 SDLApp::SDLApp(int w, int h): winWidth(w), winHeight(h)
 {
-	SessionStartEvent startEvent = Tracker::GetInstance().createSessionStartEvent();
-	Tracker::GetInstance().trackEvent(&startEvent);
+	SessionStartEvent* startEvent = Tracker::GetInstance().createSessionStartEvent();
+	Tracker::GetInstance().trackEvent(startEvent);
 
 	srand(time(NULL)); //inicia la seed del random para que genere distintos numeros siempre que compilemos
 	window = nullptr;
@@ -71,8 +71,8 @@ void SDLApp::closeSDL() {
 	SDL_DestroyWindow(window); 
 	window = nullptr; SDL_Quit();
 
-	SessionEndEvent endEvent = Tracker::GetInstance().createSessionEndEvent();
-	Tracker::GetInstance().trackEvent(&endEvent);
+	SessionEndEvent* endEvent = Tracker::GetInstance().createSessionEndEvent();
+	Tracker::GetInstance().trackEvent(endEvent);
 }
 //---------------------------Gets-------------------------
 SDL_Window* SDLApp::getWindow() const {

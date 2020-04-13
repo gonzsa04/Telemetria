@@ -12,7 +12,6 @@ enum EventType	{
 	SCENE_EVENT,
 	LIGHTPUZZLE_EVENT,
 	CONNECT4_EVENT,
-	CLICK_EVENT,
 	CLICK_EVENT_SCENE,
 	CLICK_EVENT_PUZZLE
 };
@@ -24,15 +23,9 @@ const std::string eventTypes[] = {
 	"SCENE_EVENT",
 	"LIGHTPUZZLE_EVENT",
 	"CONNECT4_EVENT",
-	"CLICK_EVENT"
 	"CLICK_EVENT_SCENE",
 	"CLICK_EVENT_PUZZLE"
 };
-
-// transforma el tipo de evento en un string (su nombre legible)
-inline const std::string EventTypeToString(EventType eventType){
-	return eventTypes[eventType];
-}
 
 // ACCIONES DE LOS EVENTOS
 enum EventAction {
@@ -48,11 +41,6 @@ const std::string eventActions[] = {
 	"EXIT",
 	"COMPLETE"
 };
-
-// transforma la accion de evento en un string (su nombre legible)
-inline const std::string EventActionsToString(EventAction eventAction) {
-	return eventActions[eventAction];
-}
 
 // EVENTOS
 // padre de todos los eventos

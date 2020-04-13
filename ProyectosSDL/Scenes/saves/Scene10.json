@@ -1,6 +1,6 @@
 {
    "AlenaActiva": true,
-   "CambioActo": false,
+   "CambioActo": true,
    "CollisionableObject": [
       {
          "Texture": 276,

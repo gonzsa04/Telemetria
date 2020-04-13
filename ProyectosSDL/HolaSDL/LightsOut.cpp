@@ -82,9 +82,9 @@ void LightsOut::win(){ //comprueba que todas las luces esten encendidas
 	if (_win && puzzleHasStarted) { //si gana y el puzzle ha empezado
 		Puzzle::win();
 		// USABILIDAD
-		LightPuzzleEvent trackEvent = Tracker::GetInstance().createLightPuzzleEvent();
-		trackEvent.setParameters(numPuzzle_, COMPLETE);
-		Tracker::GetInstance().trackEvent(&trackEvent);
+		LightPuzzleEvent* trackEvent = Tracker::GetInstance().createLightPuzzleEvent();
+		trackEvent->setParameters(numPuzzle_, COMPLETE);
+		Tracker::GetInstance().trackEvent(trackEvent);
 	}
 }
 
@@ -115,9 +115,9 @@ void LightsOut::render(){
 	if (!guarro) {
 		guarro = true;
 		// USABILIDAD
-		LightPuzzleEvent trackEvent = Tracker::GetInstance().createLightPuzzleEvent();
-		trackEvent.setParameters(numPuzzle_, ENTER);
-		Tracker::GetInstance().trackEvent(&trackEvent);
+		LightPuzzleEvent* trackEvent = Tracker::GetInstance().createLightPuzzleEvent();
+		trackEvent->setParameters(numPuzzle_, ENTER);
+		Tracker::GetInstance().trackEvent(trackEvent);
 	}
 
 	fadeOut();
@@ -171,12 +171,12 @@ void LightsOut::restartMatrix(){
 void LightsOut::resetPuzzle(){
 	this->restartMatrix();
 	// USABILIDAD
-	LightPuzzleEvent trackEvent1 = Tracker::GetInstance().createLightPuzzleEvent();
-	trackEvent1.setParameters(numPuzzle_, EXIT);
-	Tracker::GetInstance().trackEvent(&trackEvent1);
-	LightPuzzleEvent trackEvent2 = Tracker::GetInstance().createLightPuzzleEvent();
-	trackEvent2.setParameters(numPuzzle_, ENTER);
-	Tracker::GetInstance().trackEvent(&trackEvent2);
+	LightPuzzleEvent* trackEvent1 = Tracker::GetInstance().createLightPuzzleEvent();
+	trackEvent1->setParameters(numPuzzle_, EXIT);
+	Tracker::GetInstance().trackEvent(trackEvent1);
+	LightPuzzleEvent* trackEvent2 = Tracker::GetInstance().createLightPuzzleEvent();
+	trackEvent2->setParameters(numPuzzle_, ENTER);
+	Tracker::GetInstance().trackEvent(trackEvent2);
 }
 
 void LightsOut::creaDecoracion(){ //como ensuciar el código 2.0

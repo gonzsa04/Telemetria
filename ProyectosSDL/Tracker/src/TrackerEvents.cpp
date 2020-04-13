@@ -8,7 +8,7 @@ const string TrackerEvent::toJson() const
 	//Elementos comunes del evento
 	j["userID"] = id_;
 	j["time"] = timeStamp_;
-	j["type"] = EventTypeToString(type_); // escribe el tipo de forma legible
+	j["type"] = eventTypes[type_]; // escribe el tipo de forma legible
 	string result = j.dump();
 
 	return result;
@@ -17,7 +17,7 @@ const string TrackerEvent::toJson() const
 const string TrackerEvent::toCSV() const
 {
 	string timeStamp = to_string(timeStamp_);
-	string type = EventTypeToString(type_); // escribe el tipo de forma legible
+	string type = eventTypes[type_]; // escribe el tipo de forma legible
 	string result = "user id: " + id_ + ",time: " + timeStamp + ",type: " + type;
 	//También se puede usar append y sstream, pero de momento lo dejo así que es lo mismo
 	return result;

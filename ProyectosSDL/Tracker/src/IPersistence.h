@@ -24,6 +24,6 @@ public:
 protected:
 	std::list<ISerializer*> _serializeObjects;
 	ConcurrentQueue<const TrackerEvent*> _events;
-
+	const int MAX_EVENTS = 20;
 };
 

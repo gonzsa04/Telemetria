@@ -13,8 +13,8 @@ void Puzzle::handleEvent(SDL_Event& e)
 	GameState::handleEvent(e);
 	if (e.type == SDL_MOUSEBUTTONDOWN) { 
 		// USABILIDAD
-		ClickPuzzleEvent trackEvent = Tracker::GetInstance().createClickPuzzleEvent();
-		trackEvent.setParameters(numPuzzle_, { e.button.x, e.button.y }); // TO DO numPuzle (dos eventos click?)
-		Tracker::GetInstance().trackEvent(&trackEvent);
+		ClickPuzzleEvent* trackEvent = Tracker::GetInstance().createClickPuzzleEvent();
+		trackEvent->setParameters(numPuzzle_, { e.button.x, e.button.y }); // TO DO numPuzle (dos eventos click?)
+		Tracker::GetInstance().trackEvent(trackEvent);
 	}
 }

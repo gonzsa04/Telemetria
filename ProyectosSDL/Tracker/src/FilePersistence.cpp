@@ -30,9 +30,11 @@ FilePersistence::~FilePersistence()
 {
 }
 
-void FilePersistence::Send(const TrackerEvent* trackerEvent) // TO DO: recibir const TrackEvent event
+void FilePersistence::Send(const TrackerEvent* trackerEvent)
 {
 	_events.push(trackerEvent);
+	if (_events.size() >= MAX_EVENTS) 
+		Flush();
 	std::cout << "event sent" << std::endl;
 }
 
@@ -59,6 +61,7 @@ void FilePersistence::Flush()
 				file.close();
 
 			}	
+			delete tEvent;
 		}
 	}
 

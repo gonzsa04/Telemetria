@@ -136,9 +136,9 @@ void PlayState::swapScene(int nextScene)
 void PlayState::handleEvent(SDL_Event & e) {
 	if (e.type == SDL_MOUSEBUTTONDOWN) { 
 		// USABILIDAD
-		ClickSceneEvent sceneEvent = Tracker::GetInstance().createClickSceneEvent();
-		sceneEvent.setParameters(currentScene, { e.button.x, e.button.y });
-		Tracker::GetInstance().trackEvent(&sceneEvent);
+		ClickSceneEvent* sceneEvent = Tracker::GetInstance().createClickSceneEvent();
+		sceneEvent->setParameters(currentScene, { e.button.x, e.button.y });
+		Tracker::GetInstance().trackEvent(sceneEvent);
 	}
 
 	if (!enConversacion) {  //para que no de error con textos automaticos

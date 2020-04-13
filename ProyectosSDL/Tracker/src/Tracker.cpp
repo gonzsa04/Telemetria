@@ -24,9 +24,10 @@ Tracker::~Tracker()
 
 void Tracker::Init()
 {
-	activeTrackers_.push_back(new TestTracker());
+	activeTrackers_.push_back(new SessionTracker());
 	activeTrackers_.push_back(new DifficultyTracker());
 	activeTrackers_.push_back(new ClarityTracker());
+	activeTrackers_.push_back(new TestTracker());
 
 	generateSessionId();
 
@@ -35,10 +36,15 @@ void Tracker::Init()
 
 void Tracker::End()
 {
+	for (std::list<IPersistence*>::iterator ite = _persistenceObjects.begin(); ite != _persistenceObjects.end(); ++ite)
+		(*ite)->Flush(); // TO DO: ipersistance que reciba objetos evento en send (por dentro llamara al serialize de cada uno en flush)
+
 	for (ITrackerAsset* trackerAsset : activeTrackers_) {
 		delete trackerAsset; trackerAsset = nullptr;
 	}
 	activeTrackers_.clear();
+
+	ShutDownInstance();
 }
 
 Tracker & Tracker::GetInstance()
@@ -64,48 +70,48 @@ void Tracker::trackEvent(const TrackerEvent* trackerEvent)
 	while (it != activeTrackers_.end() && !(*it)->accept(trackerEvent)) { it++;	}
 	if( it != activeTrackers_.end()){
 		for (std::list<IPersistence*>::iterator ite = _persistenceObjects.begin(); ite != _persistenceObjects.end(); ++ite)
-			(*ite)->Send(trackerEvent); // TO DO: ipersistance que reciba objetos evento en send (por dentro llamara al serialize de cada uno en flush)
+			(*ite)->Send(trackerEvent);
 	}
 }
 
-SessionStartEvent Tracker::createSessionStartEvent()
+SessionStartEvent* Tracker::createSessionStartEvent()
 {
-	return SessionStartEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
+	return new SessionStartEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
 }
 
-SessionEndEvent Tracker::createSessionEndEvent()
+SessionEndEvent* Tracker::createSessionEndEvent()
 {
-	return SessionEndEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
+	return new SessionEndEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
 }
 
-TestEvent Tracker::createTestEvent()
+TestEvent* Tracker::createTestEvent()
 {
-	return TestEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
+	return new TestEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
 }
 
-SceneEvent Tracker::createSceneEvent()
+SceneEvent* Tracker::createSceneEvent()
 {
-	return SceneEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
+	return new SceneEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
 }
 
-LightPuzzleEvent Tracker::createLightPuzzleEvent()
+LightPuzzleEvent* Tracker::createLightPuzzleEvent()
 {
-	return LightPuzzleEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
+	return new LightPuzzleEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
 }
 
-Connect4Event Tracker::createConnect4Event()
+Connect4Event* Tracker::createConnect4Event()
 {
-	return Connect4Event(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
+	return new Connect4Event(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
 }
 
-ClickSceneEvent Tracker::createClickSceneEvent()
+ClickSceneEvent* Tracker::createClickSceneEvent()
 {
-	return ClickSceneEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
+	return new ClickSceneEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
 }
 
-ClickPuzzleEvent Tracker::createClickPuzzleEvent()
+ClickPuzzleEvent* Tracker::createClickPuzzleEvent()
 {
-	return ClickPuzzleEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
+	return new ClickPuzzleEvent(TimeManager::GetSingleton()->getTimeSinceBeginning(), id_);
 }
 
 void Tracker::generateSessionId()
