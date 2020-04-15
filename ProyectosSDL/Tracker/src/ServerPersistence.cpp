@@ -10,14 +10,18 @@ ServerPersistence::ServerPersistence()
 }
 
 /// A tracker event is stored in the queue
-void ServerPersistence::Send(const TrackerEvent * trackerEvent)
+void ServerPersistence::protectedSend(const TrackerEvent * trackerEvent)
 {
 	_events.push(trackerEvent);
+	if (_events.size() >= MAX_EVENTS)
+		Flush();
 }
 
 /// Applies persistence to the stored events in the queue sending them to a server
-void ServerPersistence::Flush()
+void ServerPersistence::protectedFlush()
 {
+	mutex_.lock();
+
 	if (!_events.empty())
 	{
 		std::string url = "http://ptsv2.com/t/1s8b7-1586791589/post";
@@ -34,7 +38,6 @@ void ServerPersistence::Flush()
 				try
 				{
 					std::string event = (*it)->Serialize(tEvent); //serialized event
-					
 					std::string contentType = "Content-Type: application/";
 					contentType += (*it)->Format();
 
@@ -49,8 +52,19 @@ void ServerPersistence::Flush()
 					std::cerr << "Request failed, error: " << e.what() << '\n';
 				}
 			}
+			// delete tEvent;
 		}
 	}
+
+	mutex_.unlock();
+}
+
+void ServerPersistence::Flush()
+{
+	if (thread_.joinable())
+		thread_.join();
+
+	thread_ = std::thread(&ServerPersistence::protectedFlush, this);
 }
 
 ServerPersistence::~ServerPersistence()

@@ -25,6 +25,51 @@
          "y": 400.0
       },
       {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 122.0,
+         "y": 400.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 122.0,
+         "y": 400.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 122.0,
+         "y": 400.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 122.0,
+         "y": 400.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 122.0,
+         "y": 400.0
+      },
+      {
          "Texture": 239,
          "h": 156.0,
          "rotation": 0.0,
@@ -215,32 +260,6 @@
                1
             ]
          ],
-         "Texture": 211,
-         "animation": true,
-         "descripcion": "No hay muchisima informacion, pero con esto sabemos como se organizan.",
-         "h": 54.0,
-         "heightFrame": 44,
-         "loop": true,
-         "numColsFrame": 1,
-         "numFilsFrame": 2,
-         "rotation": 0.0,
-         "soundEffect": 1,
-         "tag": "cuadernoDroga",
-         "vel": 200.0,
-         "w": 64.0,
-         "widthFrame": 54,
-         "x": 1015.0,
-         "y": 471.0
-      },
-      {
-         "Anims": [
-            [
-               0
-            ],
-            [
-               1
-            ]
-         ],
          "Texture": 209,
          "animation": true,
          "descripcion": "Ese símbolo lo hemos visto ya en muchos sitios.",
@@ -257,6 +276,32 @@
          "widthFrame": 42,
          "x": 890.0,
          "y": 470.0
+      },
+      {
+         "Anims": [
+            [
+               0
+            ],
+            [
+               1
+            ]
+         ],
+         "Texture": 211,
+         "animation": true,
+         "descripcion": "No hay muchisima informacion, pero con esto sabemos como se organizan.",
+         "h": 54.0,
+         "heightFrame": 44,
+         "loop": true,
+         "numColsFrame": 1,
+         "numFilsFrame": 2,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "tag": "cuadernoDroga",
+         "vel": 200.0,
+         "w": 64.0,
+         "widthFrame": 54,
+         "x": 1015.0,
+         "y": 471.0
       }
    ],
    "Music": [

@@ -38,6 +38,7 @@
   <ItemGroup>
     <ClCompile Include="src\CSVSerializer.cpp" />
     <ClCompile Include="src\FilePersistence.cpp" />
+    <ClCompile Include="src\IPersistence.cpp" />
     <ClCompile Include="src\JsonSerializer.cpp" />
     <ClCompile Include="src\ServerPersistence.cpp" />
     <ClCompile Include="src\sha256.cpp" />

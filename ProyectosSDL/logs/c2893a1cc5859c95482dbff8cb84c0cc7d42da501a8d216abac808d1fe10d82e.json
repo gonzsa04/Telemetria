@@ -1,0 +1,4 @@
+{"time":0.0,"type":"SESSION_START_EVENT","userID":"c2893a1cc5859c95482dbff8cb84c0cc7d42da501a8d216abac808d1fe10d82e"}
+{"time":16.0,"type":"SCENE_EVENT","userID":"c2893a1cc5859c95482dbff8cb84c0cc7d42da501a8d216abac808d1fe10d82e"}{"Action":"ENTER","Number scene":1}
+{"time":18.0,"type":"CLICK_EVENT_SCENE","userID":"c2893a1cc5859c95482dbff8cb84c0cc7d42da501a8d216abac808d1fe10d82e"}{"Position_X":574,"Position_Y":505}{"Number scene":1}
+{"time":26.0,"type":"SCENE_EVENT","userID":"c2893a1cc5859c95482dbff8cb84c0cc7d42da501a8d216abac808d1fe10d82e"}{"Action":"EXIT","Number scene":1}

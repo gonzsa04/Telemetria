@@ -28,6 +28,141 @@
          "w": 60.0,
          "x": 100.0,
          "y": 400.0
+      },
+      {
+         "Texture": 276,
+         "h": 220.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 65.0,
+         "x": 960.0,
+         "y": 190.0
+      },
+      {
+         "Texture": 276,
+         "h": 210.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 55.0,
+         "x": 1180.0,
+         "y": 200.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 100.0,
+         "y": 400.0
+      },
+      {
+         "Texture": 276,
+         "h": 220.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 65.0,
+         "x": 960.0,
+         "y": 190.0
+      },
+      {
+         "Texture": 276,
+         "h": 210.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 55.0,
+         "x": 1180.0,
+         "y": 200.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 100.0,
+         "y": 400.0
+      },
+      {
+         "Texture": 276,
+         "h": 220.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 65.0,
+         "x": 960.0,
+         "y": 190.0
+      },
+      {
+         "Texture": 276,
+         "h": 210.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 55.0,
+         "x": 1180.0,
+         "y": 200.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 100.0,
+         "y": 400.0
+      },
+      {
+         "Texture": 276,
+         "h": 220.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 65.0,
+         "x": 960.0,
+         "y": 190.0
+      },
+      {
+         "Texture": 276,
+         "h": 210.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 55.0,
+         "x": 1180.0,
+         "y": 200.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 100.0,
+         "y": 400.0
+      },
+      {
+         "Texture": 276,
+         "h": 220.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 65.0,
+         "x": 960.0,
+         "y": 190.0
+      },
+      {
+         "Texture": 276,
+         "h": 210.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 55.0,
+         "x": 1180.0,
+         "y": 200.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 100.0,
+         "y": 400.0
       }
    ],
    "GOTransiciones": [

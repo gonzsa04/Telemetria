@@ -1,0 +1,23 @@
+{"time":0.0,"type":"SESSION_START_EVENT","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}
+{"time":26.0,"type":"SCENE_EVENT","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Action":"ENTER","Number scene":0}
+{"time":30.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":399,"Position_Y":517}{"Number scene":0}
+{"time":31.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":409,"Position_Y":511}{"Number scene":0}
+{"time":31.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":427,"Position_Y":526}{"Number scene":0}
+{"time":31.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":474,"Position_Y":569}{"Number scene":0}
+{"time":31.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":474,"Position_Y":576}{"Number scene":0}
+{"time":32.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":475,"Position_Y":590}{"Number scene":0}
+{"time":32.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":474,"Position_Y":590}{"Number scene":0}
+{"time":32.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":474,"Position_Y":590}{"Number scene":0}
+{"time":32.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":474,"Position_Y":590}{"Number scene":0}
+{"time":32.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":474,"Position_Y":590}{"Number scene":0}
+{"time":32.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":474,"Position_Y":590}{"Number scene":0}
+{"time":32.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":474,"Position_Y":590}{"Number scene":0}
+{"time":32.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":474,"Position_Y":590}{"Number scene":0}
+{"time":33.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":474,"Position_Y":590}{"Number scene":0}
+{"time":33.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":474,"Position_Y":590}{"Number scene":0}
+{"time":33.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":474,"Position_Y":590}{"Number scene":0}
+{"time":33.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":481,"Position_Y":581}{"Number scene":0}
+{"time":33.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":482,"Position_Y":578}{"Number scene":0}
+{"time":33.0,"type":"CLICK_EVENT_SCENE","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Position_X":482,"Position_Y":578}{"Number scene":0}
+{"time":36.0,"type":"SCENE_EVENT","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}{"Action":"EXIT","Number scene":0}
+{"time":37.0,"type":"SESSION_END_EVENT","userID":"7d20c88102c7f2c8d116903620b15018dd4dc469386c63fafef237a19b4eb562"}

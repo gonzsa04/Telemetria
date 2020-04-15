@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <direct.h>
 #include <stdlib.h>
+#include <Windows.h>
 
 
 FilePersistence::FilePersistence()
@@ -23,9 +24,7 @@ FilePersistence::FilePersistence()
 	//Active formats
 	_serializeObjects.push_back(new JsonSerializer());
 	_serializeObjects.push_back(new CSVSerializer());
-
 }
-
 
 FilePersistence::~FilePersistence()
 {
@@ -36,7 +35,7 @@ FilePersistence::~FilePersistence()
 }
 
 /// Stores the event in the queue
-void FilePersistence::Send(const TrackerEvent* trackerEvent) 
+void FilePersistence::protectedSend(const TrackerEvent* trackerEvent) 
 {
 	_events.push(trackerEvent);
 	if (_events.size() >= MAX_EVENTS) 
@@ -44,9 +43,20 @@ void FilePersistence::Send(const TrackerEvent* trackerEvent)
 	std::cout << "event sent" << std::endl;
 }
 
-/// Applies persistence to the stored events in the queue
 void FilePersistence::Flush()
 {
+	if (thread_.joinable())
+		thread_.join();
+
+	thread_ = std::thread(&FilePersistence::protectedFlush, this);
+}
+
+/// Applies persistence to the stored events in the queue
+void FilePersistence::protectedFlush()
+{
+	mutex_.lock();
+	std::cout << "flushing" << std::endl;
+
 	if (!_events.empty())
 	{
 		std::ofstream file; 
@@ -67,10 +77,11 @@ void FilePersistence::Flush()
 				file << event << '\n'; //writes the event to the file
 
 				file.close();
-
-			}	
-			delete tEvent;
+			}
+			// delete tEvent;
 		}
 	}
+
+	mutex_.unlock();
 }
 

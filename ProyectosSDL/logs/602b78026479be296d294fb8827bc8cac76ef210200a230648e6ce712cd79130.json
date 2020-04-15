@@ -1,0 +1,3 @@
+{"time":0.0,"type":"SESSION_START_EVENT","userID":"602b78026479be296d294fb8827bc8cac76ef210200a230648e6ce712cd79130"}
+{"time":15.0,"type":"SCENE_EVENT","userID":"602b78026479be296d294fb8827bc8cac76ef210200a230648e6ce712cd79130"}{"Action":"ENTER","Number scene":1}
+{"time":16.0,"type":"CLICK_EVENT_SCENE","userID":"602b78026479be296d294fb8827bc8cac76ef210200a230648e6ce712cd79130"}{"Position_X":589,"Position_Y":492}{"Number scene":1}

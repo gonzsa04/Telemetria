@@ -12,6 +12,51 @@
          "y": 300.0
       },
       {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 100.0,
+         "y": 300.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 100.0,
+         "y": 300.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 100.0,
+         "y": 300.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 100.0,
+         "y": 300.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 100.0,
+         "y": 300.0
+      },
+      {
          "Texture": 141,
          "h": 128.0,
          "rotation": 0.0,
@@ -208,22 +253,22 @@
                1
             ]
          ],
-         "Texture": 20,
+         "Texture": 21,
          "animation": true,
-         "descripcion": "Nos puede proporcionar muchas pistas.",
-         "h": 45.0,
+         "descripcion": "Se dejó bastante dinero en vodka. Ojalá poder hacer lo mismo...",
+         "h": 20.0,
          "heightFrame": 40,
          "loop": true,
          "numColsFrame": 1,
          "numFilsFrame": 2,
-         "rotation": 0.0,
+         "rotation": 45.0,
          "soundEffect": 1,
-         "tag": "MovilMuerto",
+         "tag": "ticket",
          "vel": 200.0,
-         "w": 45.0,
+         "w": 20.0,
          "widthFrame": 40,
-         "x": 380.0,
-         "y": 435.0
+         "x": 1180.0,
+         "y": 300.0
       },
       {
          "Anims": [
@@ -260,22 +305,22 @@
                1
             ]
          ],
-         "Texture": 21,
+         "Texture": 20,
          "animation": true,
-         "descripcion": "Se dejó bastante dinero en vodka. Ojalá poder hacer lo mismo...",
-         "h": 20.0,
+         "descripcion": "Nos puede proporcionar muchas pistas.",
+         "h": 45.0,
          "heightFrame": 40,
          "loop": true,
          "numColsFrame": 1,
          "numFilsFrame": 2,
-         "rotation": 45.0,
+         "rotation": 0.0,
          "soundEffect": 1,
-         "tag": "ticket",
+         "tag": "MovilMuerto",
          "vel": 200.0,
-         "w": 20.0,
+         "w": 45.0,
          "widthFrame": 40,
-         "x": 1180.0,
-         "y": 300.0
+         "x": 380.0,
+         "y": 435.0
       }
    ],
    "MusicVolume": [

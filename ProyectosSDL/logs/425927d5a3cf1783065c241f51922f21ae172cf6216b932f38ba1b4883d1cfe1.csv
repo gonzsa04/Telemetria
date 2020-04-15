@@ -1,0 +1,18 @@
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 0.000000,type: SESSION_START_EVENT
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 14.000000,type: SCENE_EVENT,Number scene: 0,Action: ENTER
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 20.000000,type: CLICK_EVENT_SCENE,Position_X: 513,Position_Y: 409,Number scene: 0
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 20.000000,type: CLICK_EVENT_SCENE,Position_X: 513,Position_Y: 409,Number scene: 0
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 21.000000,type: CLICK_EVENT_SCENE,Position_X: 513,Position_Y: 409,Number scene: 0
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 21.000000,type: CLICK_EVENT_SCENE,Position_X: 512,Position_Y: 409,Number scene: 0
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 21.000000,type: CLICK_EVENT_SCENE,Position_X: 508,Position_Y: 417,Number scene: 0
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 22.000000,type: CLICK_EVENT_SCENE,Position_X: 508,Position_Y: 417,Number scene: 0
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 22.000000,type: CLICK_EVENT_SCENE,Position_X: 508,Position_Y: 417,Number scene: 0
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 23.000000,type: CLICK_EVENT_SCENE,Position_X: 508,Position_Y: 417,Number scene: 0
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 24.000000,type: CLICK_EVENT_SCENE,Position_X: 498,Position_Y: 429,Number scene: 0
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 24.000000,type: CLICK_EVENT_SCENE,Position_X: 498,Position_Y: 429,Number scene: 0
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 25.000000,type: CLICK_EVENT_SCENE,Position_X: 477,Position_Y: 444,Number scene: 0
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 33.000000,type: CLICK_EVENT_SCENE,Position_X: 392,Position_Y: 456,Number scene: 0
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 37.000000,type: SCENE_EVENT,Number scene: 0,Action: EXIT
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 37.000000,type: SCENE_EVENT,Number scene: 1,Action: ENTER
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 40.000000,type: SCENE_EVENT,Number scene: 1,Action: EXIT
+user id: 425927d5a3cf1783065c241f51922f21ae172cf6216b932f38ba1b4883d1cfe1,time: 41.000000,type: SESSION_END_EVENT

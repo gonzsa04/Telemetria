@@ -3,6 +3,7 @@
 #include <list>
 #include "TrackerEvents.h"
 #include <string>
+#include <thread>
 
 struct ITrackerAsset;
 class IPersistence;
@@ -13,7 +14,7 @@ public:
 	Tracker();
 	~Tracker();
 
-	void Init();
+	void Init(const std::list<ITrackerAsset*>& trackerAssetList, const std::list<IPersistence*>& persistenceList);
 	void End();
 
 	/// <summary>
@@ -40,7 +41,7 @@ public:
 	inline std::string GetSessionID() { return id_; };
 
 private:
-
+	unsigned int listSize_;
 	void generateSessionId();
 
 	std::list<ITrackerAsset*> activeTrackers_;

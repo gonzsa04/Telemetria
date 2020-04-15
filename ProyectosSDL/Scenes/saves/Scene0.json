@@ -97,33 +97,6 @@
                1
             ]
          ],
-         "Texture": 154,
-         "animation": true,
-         "convoName": "AlenaLlavesMoto",
-         "done": false,
-         "h": 40.0,
-         "heightFrame": 40,
-         "loop": true,
-         "numColsFrame": 1,
-         "numFilsFrame": 2,
-         "repeat": false,
-         "rotation": 0.0,
-         "soundEffect": 1,
-         "vel": 200.0,
-         "w": 40.0,
-         "widthFrame": 40,
-         "x": 630.0,
-         "y": 500.0
-      },
-      {
-         "Anims": [
-            [
-               0
-            ],
-            [
-               1
-            ]
-         ],
          "Texture": 20,
          "animation": true,
          "convoName": "AlenaJeffaTelefono",
@@ -141,6 +114,33 @@
          "widthFrame": 40,
          "x": 915.0,
          "y": 280.0
+      },
+      {
+         "Anims": [
+            [
+               0
+            ],
+            [
+               1
+            ]
+         ],
+         "Texture": 154,
+         "animation": true,
+         "convoName": "AlenaLlavesMoto",
+         "done": false,
+         "h": 40.0,
+         "heightFrame": 40,
+         "loop": true,
+         "numColsFrame": 1,
+         "numFilsFrame": 2,
+         "repeat": false,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "vel": 200.0,
+         "w": 40.0,
+         "widthFrame": 40,
+         "x": 630.0,
+         "y": 500.0
       }
    ],
    "GODoors": [
@@ -198,32 +198,6 @@
                1
             ]
          ],
-         "Texture": 56,
-         "animation": true,
-         "descripcion": "Es un rotulador... rojo.... y ya.",
-         "h": 40.0,
-         "heightFrame": 40,
-         "loop": true,
-         "numColsFrame": 1,
-         "numFilsFrame": 2,
-         "rotation": 0.0,
-         "soundEffect": 1,
-         "tag": "rotulador",
-         "vel": 200.0,
-         "w": 40.0,
-         "widthFrame": 40,
-         "x": 670.0,
-         "y": 500.0
-      },
-      {
-         "Anims": [
-            [
-               0
-            ],
-            [
-               1
-            ]
-         ],
          "Texture": 55,
          "animation": true,
          "descripcion": "La moto salió demasiado cara como para perder esto.",
@@ -240,6 +214,32 @@
          "widthFrame": 40,
          "x": 630.0,
          "y": 500.0
+      },
+      {
+         "Anims": [
+            [
+               0
+            ],
+            [
+               1
+            ]
+         ],
+         "Texture": 56,
+         "animation": true,
+         "descripcion": "Es un rotulador... rojo.... y ya.",
+         "h": 40.0,
+         "heightFrame": 40,
+         "loop": true,
+         "numColsFrame": 1,
+         "numFilsFrame": 2,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "tag": "rotulador",
+         "vel": 200.0,
+         "w": 40.0,
+         "widthFrame": 40,
+         "x": 670.0,
+         "y": 500.0
       }
    ],
    "Music": [
@@ -249,8 +249,8 @@
       0
    ],
    "PlayerPos": {
-      "x": 220.0,
-      "y": 428.0
+      "x": 100.0,
+      "y": 500.0
    },
    "PlayerTam": {
       "h": 201.6,
