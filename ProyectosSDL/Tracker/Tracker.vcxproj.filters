@@ -72,7 +72,9 @@
     <ClCompile Include="src\ServerPersistence.cpp">
       <Filter>Persistence</Filter>
     </ClCompile>
-    <ClCompile Include="src\IPersistence.cpp" />
+    <ClCompile Include="src\IPersistence.cpp">
+      <Filter>Persistence</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Extern">

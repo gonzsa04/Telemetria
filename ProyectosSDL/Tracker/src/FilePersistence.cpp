@@ -37,9 +37,19 @@ FilePersistence::~FilePersistence()
 /// Stores the event in the queue
 void FilePersistence::protectedSend(const TrackerEvent* trackerEvent) 
 {
-	_events.push(trackerEvent);
-	if (_events.size() >= MAX_EVENTS) 
+	const TrackerEvent* clone = trackerEvent; //pushes the pointer's clone
+	_events.push(clone);
+
+	if (_events.size() >= MAX_EVENTS)
+	{
+		for (int i = 0; i < MAX_EVENTS; i++)
+		{
+			const TrackerEvent* fClone = _events.front();
+			_flushEvents.push_back(fClone);
+			_events.pop();
+		}
 		Flush();
+	}
 	std::cout << "event sent" << std::endl;
 }
 
@@ -47,6 +57,16 @@ void FilePersistence::Flush()
 {
 	if (thread_.joinable())
 		thread_.join();
+
+	if (!_flushEvents.empty()) //only occurs when the game is closed, all remaining events must be persisted
+	{
+		while (!_events.empty())
+		{
+			const TrackerEvent* fClone = _events.front();
+			_flushEvents.push_back(fClone);
+			_events.pop();
+		}
+	}
 
 	thread_ = std::thread(&FilePersistence::protectedFlush, this);
 }
@@ -57,30 +77,30 @@ void FilePersistence::protectedFlush()
 	mutex_.lock();
 	std::cout << "flushing" << std::endl;
 
-	if (!_events.empty())
+	if (!_flushEvents.empty())
 	{
 		std::ofstream file; 
 		
-		while (!_events.empty()) //write pending events
+		//write pending events
+		//serializes the event in all availlable formats
+		for (std::list<ISerializer*>::iterator it = _serializeObjects.begin(); it != _serializeObjects.end(); ++it)
 		{
-			const TrackerEvent* tEvent = _events.pop();
+			std::string path;
+			path.append(_commonPath + (*it)->Format());
 
-			//serializes the event in all availlable formats
-			for (std::list<ISerializer*>::iterator it = _serializeObjects.begin(); it != _serializeObjects.end(); ++it)
+			file.open(path, std::ios::out | std::ios::app);
+
+			for (std::list<const TrackerEvent*>::iterator ite = _flushEvents.begin(); ite != _flushEvents.end(); ++ite)
 			{
-				std::string path;
-				path.append(_commonPath + (*it)->Format());
-
-				file.open(path, std::ios::out | std::ios::app);
-
-				std::string event = (*it)->Serialize(tEvent); 
+				std::string event = (*it)->Serialize(*ite);
 				file << event << '\n'; //writes the event to the file
-
-				file.close();
 			}
-			// delete tEvent;
+
+			file.close();
 		}
 	}
+
+	_flushEvents.clear();
 
 	mutex_.unlock();
 }

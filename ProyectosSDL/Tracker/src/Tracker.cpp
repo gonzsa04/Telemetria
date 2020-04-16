@@ -58,7 +58,8 @@ void Tracker::trackEvent(const TrackerEvent* trackerEvent)
 {
 	list<ITrackerAsset*>::iterator it = activeTrackers_.begin();
 	while (it != activeTrackers_.end() && !(*it)->accept(trackerEvent)) { it++;	}
-	if( it != activeTrackers_.end()){
+	if( it != activeTrackers_.end())
+	{
 		for (std::list<IPersistence*>::iterator ite = _persistenceObjects.begin(); ite != _persistenceObjects.end(); ++ite)
 			(*ite)->Send(trackerEvent);
 	}
