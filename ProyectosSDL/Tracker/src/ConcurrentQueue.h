@@ -53,14 +53,18 @@ public:
 	bool empty()
 	{
 		std::unique_lock<std::mutex> mlock(mutex_);
-		bool empty =  queue_.size() == 0;
+		bool empty = queue_.size() == 0;
 		mlock.unlock();
 		cond_.notify_one();
 		return empty;
 	}
 
 	int size() {
-		return queue_.size();
+		std::unique_lock<std::mutex> mlock(mutex_);
+		int aux = queue_.size();
+		mlock.unlock();
+		cond_.notify_one();
+		return aux;
 	}
 
 private:

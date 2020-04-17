@@ -57,6 +57,177 @@
          "y": 270.0
       },
       {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
+         "Texture": 276,
+         "h": 206.0,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "w": 60.0,
+         "x": 1100.0,
+         "y": 270.0
+      },
+      {
          "Texture": 121,
          "h": 120.0,
          "rotation": 0.0,
@@ -226,48 +397,22 @@
                1
             ]
          ],
-         "Texture": 15,
+         "Texture": 17,
          "animation": true,
-         "descripcion": "Si lo necesitamos siempre podemos echarnos un trago.",
-         "h": 44.0,
-         "heightFrame": 42,
+         "descripcion": "Probablemente sea alguien importante para este hombre.",
+         "h": 50.0,
+         "heightFrame": 44,
          "loop": true,
          "numColsFrame": 1,
          "numFilsFrame": 2,
          "rotation": 0.0,
          "soundEffect": 1,
-         "tag": "botellaVodka",
+         "tag": "fotoNoviaMuerto",
          "vel": 200.0,
          "w": 50.0,
-         "widthFrame": 40,
-         "x": 715.0,
-         "y": 465.0
-      },
-      {
-         "Anims": [
-            [
-               0
-            ],
-            [
-               1
-            ]
-         ],
-         "Texture": 14,
-         "animation": true,
-         "descripcion": "Tiene un poco de polvillo en el fondo",
-         "h": 30.0,
-         "heightFrame": 42,
-         "loop": true,
-         "numColsFrame": 1,
-         "numFilsFrame": 2,
-         "rotation": 0.0,
-         "soundEffect": 1,
-         "tag": "bolsaVacia",
-         "vel": 200.0,
-         "w": 30.0,
-         "widthFrame": 42,
-         "x": 690.0,
-         "y": 480.0
+         "widthFrame": 44,
+         "x": 600.0,
+         "y": 200.0
       },
       {
          "Anims": [
@@ -304,22 +449,48 @@
                1
             ]
          ],
-         "Texture": 17,
+         "Texture": 14,
          "animation": true,
-         "descripcion": "Probablemente sea alguien importante para este hombre.",
-         "h": 50.0,
-         "heightFrame": 44,
+         "descripcion": "Tiene un poco de polvillo en el fondo",
+         "h": 30.0,
+         "heightFrame": 42,
          "loop": true,
          "numColsFrame": 1,
          "numFilsFrame": 2,
          "rotation": 0.0,
          "soundEffect": 1,
-         "tag": "fotoNoviaMuerto",
+         "tag": "bolsaVacia",
+         "vel": 200.0,
+         "w": 30.0,
+         "widthFrame": 42,
+         "x": 690.0,
+         "y": 480.0
+      },
+      {
+         "Anims": [
+            [
+               0
+            ],
+            [
+               1
+            ]
+         ],
+         "Texture": 15,
+         "animation": true,
+         "descripcion": "Si lo necesitamos siempre podemos echarnos un trago.",
+         "h": 44.0,
+         "heightFrame": 42,
+         "loop": true,
+         "numColsFrame": 1,
+         "numFilsFrame": 2,
+         "rotation": 0.0,
+         "soundEffect": 1,
+         "tag": "botellaVodka",
          "vel": 200.0,
          "w": 50.0,
-         "widthFrame": 44,
-         "x": 600.0,
-         "y": 200.0
+         "widthFrame": 40,
+         "x": 715.0,
+         "y": 465.0
       }
    ],
    "MusicVolume": [

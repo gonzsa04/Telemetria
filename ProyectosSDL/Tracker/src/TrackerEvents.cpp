@@ -45,6 +45,11 @@ const string TestEvent::toCSV() const
 	return result;
 }
 
+TrackerEvent* TestEvent::clone() const
+{
+	return new TestEvent(timeStamp_, id_);
+}
+
 const string SceneEvent::toJson() const
 {
 	//Habría que mirar la legibilidad 
@@ -63,6 +68,14 @@ const string SceneEvent::toCSV() const
 	string head = TrackerEvent::toCSV();
 	string result = head + ",Number scene: " + to_string(numScene_) + ",Action: " + eventActions[action_];
 	return result;
+}
+
+TrackerEvent* SceneEvent::clone() const
+{
+	SceneEvent* aux = new SceneEvent(timeStamp_, id_);
+	aux->setParameters(numScene_, action_);
+
+	return aux;
 }
 
 const string PuzzleEvent::toJson() const
@@ -120,6 +133,14 @@ const string ClickSceneEvent::toCSV() const
 	return result;
 }
 
+TrackerEvent* ClickSceneEvent::clone() const
+{
+	ClickSceneEvent* aux = new ClickSceneEvent(timeStamp_, id_);
+	aux->setParameters(numScene_, pos_);
+
+	return aux;
+}
+
 const string ClickPuzzleEvent::toJson() const
 {
 	string head = ClickEvent::toJson();
@@ -136,4 +157,38 @@ const string ClickPuzzleEvent::toCSV() const
 	string head = ClickEvent::toCSV();
 	string result = head + ",Number puzzle: " + to_string(numPuzzle_);
 	return result;
+}
+
+TrackerEvent* ClickPuzzleEvent::clone() const
+{
+	ClickPuzzleEvent* aux = new ClickPuzzleEvent(timeStamp_, id_);
+	aux->setParameters(numPuzzle_, pos_);
+
+	return aux;
+}
+
+TrackerEvent* SessionStartEvent::clone() const
+{
+	return new SessionStartEvent(timeStamp_, id_);
+}
+
+TrackerEvent* SessionEndEvent::clone() const
+{
+	return new SessionEndEvent(timeStamp_, id_);
+}
+
+TrackerEvent* Connect4Event::clone() const
+{
+	Connect4Event* aux = new Connect4Event(timeStamp_, id_);
+	aux->setParameters(numPuzzle_, action_);
+
+	return aux;
+}
+
+TrackerEvent* LightPuzzleEvent::clone() const
+{
+	LightPuzzleEvent* aux = new LightPuzzleEvent(timeStamp_, id_);
+	aux->setParameters(numPuzzle_, action_);
+
+	return aux;
 }

@@ -58,6 +58,10 @@ public:
 	virtual const string toCSV() const;
 
 	inline const EventType getType() const { return type_; }
+
+	virtual TrackerEvent* clone() const = 0;
+
+	static inline void releasePointer(const TrackerEvent* event) { delete event;  };
 };
 
 // EVENTO PARA TESTING
@@ -67,17 +71,21 @@ public:
 
 	virtual const string toJson() const;
 	virtual const string toCSV() const;
+
+	virtual TrackerEvent* clone() const;
 };
 
 //EVENTOS DE INICIO Y FIN DE SESION
 struct SessionStartEvent : public TrackerEvent {
 public:
 	SessionStartEvent(double timeStamp, string id) : TrackerEvent(timeStamp, id, SESSION_START_EVENT) { std::cout << "SESSION START " << std::endl; }
+	virtual TrackerEvent* clone() const;
 };
 
 struct SessionEndEvent : public TrackerEvent {
 public:
 	SessionEndEvent(double timeStamp, string id) : TrackerEvent(timeStamp, id, SESSION_END_EVENT) { std::cout << "SESSION END " << std::endl; }
+	virtual TrackerEvent* clone() const;
 };
 
 // EVENTO DE ESCENA
@@ -92,21 +100,20 @@ public:
 	inline void setParameters(int numScene, EventAction action) { numScene_ = numScene; action_ = action; std::cout << "SCENE " << numScene_ << " " << eventActions[action] << std::endl; }
 	virtual const string toJson() const;
 	virtual const string toCSV() const;
+
+	virtual TrackerEvent* clone() const;
 };
 
 // EVENTOS DE PUZLE
 // padre de LightPuzzle y Connect4
 struct PuzzleEvent : public TrackerEvent {
-private:
+protected: // de esta forma no se pueden hacer instancias de PuzzleEvent
 	int numPuzzle_;
 	EventAction action_;
-
-protected: // de esta forma no se pueden hacer instancias de PuzzleEvent
 	PuzzleEvent(double timeStamp, string id, EventType eventType) : TrackerEvent(timeStamp, id, eventType), numPuzzle_(0), action_(NONE_ACTION) {}
 
 public:
-	inline void setParameters(int numPuzzle, EventAction action) { numPuzzle_ = numPuzzle; action_ = action; std::cout << "PUZZLE " << numPuzzle_ << " " << eventActions[action] << std::endl;
-	}
+	inline void setParameters(int numPuzzle, EventAction action) { numPuzzle_ = numPuzzle; action_ = action; std::cout << "PUZZLE " << numPuzzle_ << " " << eventActions[action] << std::endl; }
 	virtual const string toJson() const;
 	virtual const string toCSV() const;
 };
@@ -114,11 +121,13 @@ public:
 struct Connect4Event : public PuzzleEvent {
 public:
 	Connect4Event(double timeStamp, string id) : PuzzleEvent(timeStamp, id, CONNECT4_EVENT) {}
+	virtual TrackerEvent* clone() const;
 };
 
 struct LightPuzzleEvent : public PuzzleEvent {
 public:
 	LightPuzzleEvent(double timeStamp, string id) : PuzzleEvent(timeStamp, id, LIGHTPUZZLE_EVENT) {}
+	virtual TrackerEvent* clone() const;
 };
 
 // EVENTO DE CLICK DEL JUGADOR
@@ -145,6 +154,8 @@ public:
 	}
 	virtual const string toJson() const;
 	virtual const string toCSV() const;
+
+	virtual TrackerEvent* clone() const;
 };
 
 
@@ -159,6 +170,8 @@ public:
 	}
 	virtual const string toJson() const;
 	virtual const string toCSV() const;
+
+	virtual TrackerEvent* clone() const;
 };
 
 

@@ -28,77 +28,56 @@ FilePersistence::FilePersistence()
 
 FilePersistence::~FilePersistence()
 {
-	for (auto &it : _serializeObjects) delete it; _serializeObjects.clear();
-}
-
-/// Stores the event in the queue
-void FilePersistence::protectedSend(const TrackerEvent* trackerEvent) 
-{
-	const TrackerEvent* clone = trackerEvent; //pushes the pointer's clone
-	_events.push(clone);
-
-	if (_events.size() >= MAX_EVENTS)
-	{
-		for (int i = 0; i < MAX_EVENTS; i++)
-		{
-			const TrackerEvent* fClone = _events.front();
-			_flushEvents.push_back(fClone);
-			_events.pop();
-		}
-		Flush();
-	}
-	std::cout << "event sent" << std::endl;
+	for (ISerializer* it : _serializeObjects) delete it; _serializeObjects.clear();
 }
 
 void FilePersistence::Flush()
 {
-	if (thread_.joinable())
-		thread_.join();
+	mutex_.lock();
 
-	if (!_flushEvents.empty()) //only occurs when the game is closed, all remaining events must be persisted
-	{
-		while (!_events.empty())
-		{
-			const TrackerEvent* fClone = _events.front();
-			_flushEvents.push_back(fClone);
-			_events.pop();
-		}
+	if (threadFinished_) {
+		std::cout << "flushingFile" << std::endl;
+		threadFinished_ = false;
+		mutex_.unlock();
+		if (thread_.joinable())
+			thread_.join();
+
+		thread_ = std::thread(&FilePersistence::protectedFlush, this);
 	}
-
-	thread_ = std::thread(&FilePersistence::protectedFlush, this);
+	else {
+		mutex_.unlock();
+	}
 }
 
 /// Applies persistence to the stored events in the queue
 void FilePersistence::protectedFlush()
 {
-	mutex_.lock();
-	std::cout << "flushing" << std::endl;
-
-	if (!_flushEvents.empty())
+	unsigned int i = 0;
+	while(!_eventQueue.empty() && i < MAX_EVENTS)
 	{
+		const TrackerEvent* event = _eventQueue.pop();
+
 		std::ofstream file; 
-		
 		//write pending events
 		//serializes the event in all availlable formats
 		for (std::list<ISerializer*>::iterator it = _serializeObjects.begin(); it != _serializeObjects.end(); ++it)
 		{
 			std::string path;
 			path.append(_commonPath + (*it)->Format());
-
 			file.open(path, std::ios::out | std::ios::app);
 
-			for (std::list<const TrackerEvent*>::iterator ite = _flushEvents.begin(); ite != _flushEvents.end(); ++ite)
-			{
-				std::string event = (*it)->Serialize(*ite);
-				file << event << '\n'; //writes the event to the file
-			}
+			std::string stringEvent = (*it)->Serialize(event);
+			file << stringEvent << '\n'; //writes the event to the file
 
 			file.close();
 		}
+
+		TrackerEvent::releasePointer(event);
+		i++;
 	}
 
-	_flushEvents.clear();
-
+	mutex_.lock();
+	threadFinished_ = true;
 	mutex_.unlock();
 }
 

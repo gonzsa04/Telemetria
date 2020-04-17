@@ -1,5 +1,6 @@
 #pragma once
 #include "IPersistence.h"
+#include <queue>
 
 class ServerPersistence : public IPersistence
 {
@@ -14,11 +15,5 @@ protected:
 	/// Applies persistence to the stored events in the queue sending them to a server
 	/// </summary>
 	virtual void protectedFlush();
-
-	/// <summary>
-	/// A tracker event is stored in the queue
-	/// </summary>
-	virtual void protectedSend(const TrackerEvent* trackerEvent);
-
 };
 

@@ -16,10 +16,6 @@ protected:
 	/// </summary>
 	virtual void protectedFlush();
 
-	/// <summary>
-	/// Stores the event in the queue
-	/// </summary>
-	virtual void protectedSend(const TrackerEvent* trackerEvent);
 private:
 
 	std::string _commonPath; //directory path where the file is written 

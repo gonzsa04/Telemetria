@@ -29,7 +29,7 @@ void Tracker::Init(const std::list<ITrackerAsset*>& trackerAssetList, const std:
 void Tracker::End()
 {
 	for (std::list<IPersistence*>::iterator ite = _persistenceObjects.begin(); ite != _persistenceObjects.end(); ++ite)
-		(*ite)->Flush(); // TO DO: ipersistance que reciba objetos evento en send (por dentro llamara al serialize de cada uno en flush)
+		(*ite)->finalFlush(); // TO DO: ipersistance que reciba objetos evento en send (por dentro llamara al serialize de cada uno en flush)
 
 	activeTrackers_.clear();
 	_persistenceObjects.clear();
@@ -58,11 +58,14 @@ void Tracker::trackEvent(const TrackerEvent* trackerEvent)
 {
 	list<ITrackerAsset*>::iterator it = activeTrackers_.begin();
 	while (it != activeTrackers_.end() && !(*it)->accept(trackerEvent)) { it++;	}
-	if( it != activeTrackers_.end())
+	if(it != activeTrackers_.end())
 	{
-		for (std::list<IPersistence*>::iterator ite = _persistenceObjects.begin(); ite != _persistenceObjects.end(); ++ite)
+		for (std::list<IPersistence*>::iterator ite = _persistenceObjects.begin(); ite != _persistenceObjects.end(); ++ite) {
 			(*ite)->Send(trackerEvent);
+		}
 	}
+
+	TrackerEvent::releasePointer(trackerEvent); // delete the event. Its already cloned in persistence
 }
 
 SessionStartEvent* Tracker::createSessionStartEvent()
