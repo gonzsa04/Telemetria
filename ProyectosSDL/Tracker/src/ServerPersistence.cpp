@@ -84,8 +84,5 @@ void ServerPersistence::Flush()
 
 ServerPersistence::~ServerPersistence()
 {
-	while (!_serializeObjects.empty())
-	{
-		_serializeObjects.pop_back();
-	}
+	for (auto &it : _serializeObjects) delete it; _serializeObjects.clear();
 }

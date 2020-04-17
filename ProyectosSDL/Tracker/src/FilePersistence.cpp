@@ -28,10 +28,7 @@ FilePersistence::FilePersistence()
 
 FilePersistence::~FilePersistence()
 {
-	while (!_serializeObjects.empty())
-	{
-		_serializeObjects.pop_back();
-	}
+	for (auto &it : _serializeObjects) delete it; _serializeObjects.clear();
 }
 
 /// Stores the event in the queue
