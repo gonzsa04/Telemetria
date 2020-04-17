@@ -29,11 +29,12 @@ void Tracker::Init(const std::list<ITrackerAsset*>& trackerAssetList, const std:
 void Tracker::End()
 {
 	for (std::list<IPersistence*>::iterator ite = _persistenceObjects.begin(); ite != _persistenceObjects.end(); ++ite)
-		(*ite)->finalFlush(); // TO DO: ipersistance que reciba objetos evento en send (por dentro llamara al serialize de cada uno en flush)
+		(*ite)->finalFlush(); 
 
 	activeTrackers_.clear();
 	_persistenceObjects.clear();
 
+	TimeManager::ShutDownSingleton();
 	ShutDownInstance();
 }
 
