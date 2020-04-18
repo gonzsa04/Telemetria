@@ -2,10 +2,11 @@
 
 #include "IPersistence.h"
 
+
 class FilePersistence : public IPersistence
 {
 public:
-	FilePersistence();
+	FilePersistence(const std::list<ISerializer*> serializers);
 	virtual ~FilePersistence();
 
 	virtual void Flush();

@@ -1,7 +1,5 @@
 #include "FilePersistence.h"
 #include "Tracker.h"
-#include "JsonSerializer.h"
-#include "CSVSerializer.h"
 #include <iostream>
 #include <fstream>
 
@@ -11,7 +9,7 @@
 #include <Windows.h>
 
 
-FilePersistence::FilePersistence()
+FilePersistence::FilePersistence(const std::list<ISerializer*> serializers)
 {
 	//Gets files' path & creates directory if it doesn't exist
 	_commonPath = _SOLUTIONDIR;
@@ -21,14 +19,12 @@ FilePersistence::FilePersistence()
 	//Common path file name
 	_commonPath.append("\\" + Tracker::GetInstance().GetSessionID() + ".");
 
-	//Active formats
-	_serializeObjects.push_back(new JsonSerializer());
-	_serializeObjects.push_back(new CSVSerializer());
+	_serializeObjects = serializers;
+	
 }
 
 FilePersistence::~FilePersistence()
 {
-	for (ISerializer* it : _serializeObjects) delete it; _serializeObjects.clear();
 }
 
 void FilePersistence::Flush()

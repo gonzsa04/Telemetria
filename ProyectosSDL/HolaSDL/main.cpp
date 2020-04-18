@@ -7,6 +7,8 @@
 #include <ITrackerAsset.h>
 #include <FilePersistence.h>
 #include <ServerPersistence.h>
+#include <JsonSerializer.h>
+#include <CSVSerializer.h>
 
 using namespace std;
 
@@ -16,8 +18,11 @@ int main(int argc, char* argv[]){
 	DifficultyTracker difficultyTracker;
 	ClarityTracker clarityTracker;
 	SessionTracker sessionTracker;
-	FilePersistence filePersistence;
-	ServerPersistence serverPersistence;
+	JsonSerializer jsonSerializer;
+	CSVSerializer csvSerializer;
+	FilePersistence filePersistence({&jsonSerializer, &csvSerializer});
+	ServerPersistence serverPersistence({ &jsonSerializer, &csvSerializer });
+	
 
 	Tracker::GetInstance().Init({&difficultyTracker, &clarityTracker, &sessionTracker }, { &serverPersistence, &filePersistence });
 	SDLApp g(1280, 720);

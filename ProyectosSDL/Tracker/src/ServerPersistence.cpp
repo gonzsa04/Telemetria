@@ -1,12 +1,10 @@
 #include "ServerPersistence.h"
-#include "JsonSerializer.h"
-#include "CSVSerializer.h"
+#include "ISerializer.h"
 #include "HTTPRequest.hpp"
 
-ServerPersistence::ServerPersistence()
+ServerPersistence::ServerPersistence(const std::list<ISerializer*> serializers)
 {
-	_serializeObjects.push_back(new JsonSerializer());
-	_serializeObjects.push_back(new CSVSerializer());
+	_serializeObjects = serializers;
 }
 
 /// Applies persistence to the stored events in the queue sending them to a server
@@ -72,5 +70,4 @@ void ServerPersistence::Flush()
 
 ServerPersistence::~ServerPersistence()
 {
-	for (ISerializer* it : _serializeObjects) delete it; _serializeObjects.clear();
 }

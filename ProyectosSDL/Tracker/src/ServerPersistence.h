@@ -5,7 +5,7 @@
 class ServerPersistence : public IPersistence
 {
 public:
-	ServerPersistence();
+	ServerPersistence(const std::list<ISerializer*> serializers);
 
 	virtual void Flush();
 	virtual ~ServerPersistence();
