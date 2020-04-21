@@ -8,13 +8,16 @@
 struct ITrackerAsset;
 class IPersistence;
 
+// clase que gestiona el sistema de telemetria
 class Tracker
 {
 public:
 	Tracker();
 	~Tracker();
 
+	// inicializacion del tracker, recibiendo los trackerAssets y persistencias deseadas
 	void Init(const std::list<ITrackerAsset*>& trackerAssetList, const std::list<IPersistence*>& persistenceList);
+	// libera los recursos del tracker. Se persisten todos los eventos que quedasen pendientes en la cola
 	void End();
 
 	/// <summary>
@@ -27,8 +30,11 @@ public:
 	/// </summary>
 	static void ShutDownInstance();
 
+	// dado un trackerEvent, si alguno de sus trackerAssets lo acepta, se pasa un clon de ese evento a cada
+	// objeto de persistencia. Por ultimo, se libera el evento recibido. Llamado desde instrumentalizacion
 	void trackEvent(const TrackerEvent* trackerEvent);
 
+	// metodos factoria que crean un evento del tipo correspondiente y lo devuelve (llamados desde instrumentalizacion)
 	TestEvent* createTestEvent();
 	SceneEvent* createSceneEvent();
 	LightPuzzleEvent* createLightPuzzleEvent();
@@ -38,10 +44,13 @@ public:
 	SessionStartEvent* createSessionStartEvent();
 	SessionEndEvent* createSessionEndEvent();
 
+	// devuelve el id de la sesion
 	inline std::string GetSessionID() { return id_; };
 
 private:
 	unsigned int listSize_;
+
+	// genera un id de sesion aplicando sha256 a una cadena inicial
 	void generateSessionId();
 
 	std::list<ITrackerAsset*> activeTrackers_;

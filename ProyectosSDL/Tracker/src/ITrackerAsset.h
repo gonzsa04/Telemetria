@@ -1,14 +1,17 @@
 #pragma once
 #include "TrackerEvents.h"
 
+// interfaz TrackerAsset con metodo virtual puro a redefinir por las clases hijas
 struct ITrackerAsset
 {
 public:
 	ITrackerAsset() {}
 
+	// indica si el TrackerAsset acepta o no el evento
 	virtual inline const bool accept(const TrackerEvent* trackerEvent) const = 0;
 };
 
+// tracker asset que acepta eventos de test
 struct TestTracker : public ITrackerAsset {
 public:
 	TestTracker() : ITrackerAsset() {}

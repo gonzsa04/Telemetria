@@ -16,6 +16,7 @@ enum EventType	{
 	CLICK_EVENT_PUZZLE
 };
 
+// NOMBRE DE LOS TIPOS DE LOS EVENTOS (nombre que se escribe al serializarse)
 const std::string eventTypes[] = {
 	"TEST_EVENT",
 	"SESSION_START_EVENT",
@@ -35,6 +36,7 @@ enum EventAction {
 	COMPLETE
 };
 
+// NOMBRE DE LAS ACCIONES DE LOS EVENTOS (nombre que se escribe al serializarse)
 const std::string eventActions[] = {
 	"NONE_ACTION",
 	"ENTER",
@@ -43,7 +45,8 @@ const std::string eventActions[] = {
 };
 
 // EVENTOS
-// padre de todos los eventos
+// padre de todos los eventos. Tiene los campos comunes de todos los eventos: timeStamp, id de la sesion y tipo del evento
+// Tiene metodos para serializar el evento, clonarse, etc.
 struct TrackerEvent
 {
 protected:
@@ -54,13 +57,18 @@ protected:
 public:
 	TrackerEvent(double timeStamp, string id, EventType type) : timeStamp_(timeStamp), id_(id), type_(type) {}
 
-	virtual const string toJson() const;	
-	virtual const string toCSV() const;
+	// serializacion a formato json
+	virtual const string toJson() const;
+	// serializacion a formato csv
+	virtual const string toCSV() const;     
 
-	inline const EventType getType() const { return type_; }
+	// devuelve el tipo del evento
+	inline const EventType getType() const { return type_; } 
 
-	virtual TrackerEvent* clone() const = 0;
+	// clona y devuelve la copia del evento. Esto pide memoria dinamica, que tendra que liberarse mas tarde 
+	virtual TrackerEvent* clone() const = 0;                 
 
+	// libera la memoria del evento recibido
 	static inline void releasePointer(const TrackerEvent* event) { delete event;  };
 };
 
@@ -131,6 +139,7 @@ public:
 };
 
 // EVENTO DE CLICK DEL JUGADOR
+// padre de ClickSceneEvent y ClickPuzzleEvent
 struct ClickEvent : public TrackerEvent {
 protected:
 	std::pair<int, int> pos_;

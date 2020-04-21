@@ -72,7 +72,6 @@
     <ClCompile Include="src\ServerPersistence.cpp">
       <Filter>Persistence</Filter>
     </ClCompile>
-    <ClCompile Include="src\IPersistence.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Extern">
