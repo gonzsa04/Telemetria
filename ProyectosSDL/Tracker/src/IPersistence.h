@@ -6,15 +6,15 @@
 #include "ConcurrentQueue.h"
 #include <thread>
 
+// interfaz de persistencia, con metodos para recibir eventos y persistirlos
+// utiliza una hebra para persistir los eventos concurrentemente
 class IPersistence
 {
 public:
 	IPersistence() {};
 	virtual ~IPersistence() {};
 
-	/// <summary>
-	/// A tracker event is stored in the queue
-	/// </summary>
+	// se recibe un evento, se añade a la cola, y si esta supera el tamaño maximo se persisten todos los eventos
 	inline void Send(const TrackerEvent* trackerEvent) 
 	{
 		const TrackerEvent* clone = trackerEvent->clone(); //pushes the pointer's clone
@@ -28,9 +28,8 @@ public:
 		//std::cout << "event sent" << std::endl;
 	};
 
-	/// <summary>
-	/// Creates the thread. It needs to be redefined in every child.
-	/// </summary>
+	// si la hebra de persistencia ha acabado de hacer flush, se hace otro flush
+	// si no, no hace nada
 	virtual void Flush() = 0;
 
 	inline void release() 
@@ -40,6 +39,7 @@ public:
 		}
 	};
 
+	// flush final de los eventos -> persiste todos los eventos que queden en la cola
 	inline virtual void finalFlush() {
 		while (!_eventQueue.empty()) {			
 			Flush();
@@ -54,9 +54,9 @@ protected:
 	
 	ConcurrentQueue<const TrackerEvent*> _eventQueue; //stored events pending flush operation
 	
-	const int MAX_EVENTS = 5; //max queue storage
+	const int MAX_EVENTS = 20; //max queue storage
 
-	// specific flush
+	// recorrera la lista de serializadores para persistir cada evento en cada uno de los formatos
 	virtual void protectedFlush() = 0;
 
 	bool threadFinished_ = true;
