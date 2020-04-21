@@ -2,17 +2,17 @@
 #include "ISerializer.h"
 #include "HTTPRequest.hpp"
 
-ServerPersistence::ServerPersistence(const std::list<ISerializer*> serializers)
+ServerPersistence::ServerPersistence(const std::list<ISerializer*> serializers, const std::string url)
 {
 	_serializeObjects = serializers;
+	_url = url;
 }
 
 /// Applies persistence to the stored events in the queue sending them to a server
 void ServerPersistence::protectedFlush()
 {
-	std::string url = "http://ptsv2.com/t/jgkgh-1587054268/post";
 	std::string method = "POST";
-	http::Request request(url);
+	http::Request request(_url);
 
 	unsigned int i = 0;
 	while (!_eventQueue.empty() && i < MAX_EVENTS) //write pending events
@@ -29,11 +29,7 @@ void ServerPersistence::protectedFlush()
 				contentType += (*it)->Format();
 
 				// send a post request
-				const http::Response response = request.send(method, stringEvent, {
-					contentType
-					});
-
-				//std::cout << std::string(response.body.begin(), response.body.end()) << '\n'; // print the result
+				request.send(method, stringEvent, {	contentType });
 			}
 			catch (const std::exception & e)
 			{

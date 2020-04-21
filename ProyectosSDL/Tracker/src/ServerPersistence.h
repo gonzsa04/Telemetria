@@ -5,7 +5,7 @@
 class ServerPersistence : public IPersistence
 {
 public:
-	ServerPersistence(const std::list<ISerializer*> serializers);
+	ServerPersistence(const std::list<ISerializer*> serializers, const std::string url);
 
 	virtual void Flush();
 	virtual ~ServerPersistence();
@@ -15,5 +15,6 @@ protected:
 	/// Applies persistence to the stored events in the queue sending them to a server
 	/// </summary>
 	virtual void protectedFlush();
+	std::string _url;
 };
 

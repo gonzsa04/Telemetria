@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
 	JsonSerializer jsonSerializer;
 	CSVSerializer csvSerializer;
 	FilePersistence filePersistence({&jsonSerializer, &csvSerializer});
-	ServerPersistence serverPersistence({ &jsonSerializer, &csvSerializer });
+	ServerPersistence serverPersistence({ &jsonSerializer, &csvSerializer }, "http://ptsv2.com/t/jgkgh-1587054268/post");
 	
 
 	Tracker::GetInstance().Init({&difficultyTracker, &clarityTracker, &sessionTracker }, { &serverPersistence, &filePersistence });
