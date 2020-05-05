@@ -9,6 +9,9 @@ public:
 	FilePersistence(const std::list<ISerializer*> serializers);
 	virtual ~FilePersistence();
 
+	/// <summary>
+	/// Prepares protected flush operation if thread is free
+	/// </summary>
 	virtual void Flush();
 
 protected:

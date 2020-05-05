@@ -27,6 +27,7 @@ FilePersistence::~FilePersistence()
 {
 }
 
+// Prepares protected flush operation if thread is free
 void FilePersistence::Flush()
 {
 	mutex_.lock();
@@ -72,6 +73,7 @@ void FilePersistence::protectedFlush()
 		i++;
 	}
 
+	//operation finished, thread is now free
 	mutex_.lock();
 	threadFinished_ = true;
 	mutex_.unlock();

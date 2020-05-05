@@ -7,6 +7,9 @@ class ServerPersistence : public IPersistence
 public:
 	ServerPersistence(const std::list<ISerializer*> serializers, const std::string url);
 
+	/// <summary>
+	/// Prepares protected flush operation if thread is free
+	/// </summary>
 	virtual void Flush();
 	virtual ~ServerPersistence();
 

@@ -40,6 +40,6 @@ int main(int argc, char* argv[]){
 
 	filePersistence.release();
 	serverPersistence.release();
-	_CrtDumpMemoryLeaks(); //esta instruccion le vale a Diego para ver la basura. No quiteis el comentario pls T_T
+	//_CrtDumpMemoryLeaks(); 
 	return 0;
 }

@@ -41,11 +41,14 @@ void ServerPersistence::protectedFlush()
 		TrackerEvent::releasePointer(event);
 		i++;
 	}
+
+	//operation finished, thread is now free
 	mutex_.lock();
 	threadFinished_ = true;
 	mutex_.unlock();
 }
 
+// Prepares protected flush operation if thread is free
 void ServerPersistence::Flush()
 {
 	mutex_.lock();
